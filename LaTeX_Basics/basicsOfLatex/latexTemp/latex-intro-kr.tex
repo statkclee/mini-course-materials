@@ -1,0 +1,530 @@
+
+\documentclass[11pt]{article} % 'article' is the document type while '11pt' is an optional argument. there are many document types, and there are many potential options to include for each document type.
+
+\usepackage{geometry}
+\geometry{a4paper}     % ... or letterpaper or a4paper or a5paper or ... 
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage{amsmath}  % this permits text in eqnarray among other benefits
+\usepackage{color}          % gives color options
+\usepackage{fullpage} % this package makes use of more of each page but is not always installed
+\usepackage{natbib}
+\usepackage[hangul]{kotex} % Hangul options
+
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\title{LaTeX 소개}
+\author{David Diez, OpenIntro.org\\
+              번역: 이광춘, xwMOOC}
+\date{}  % removing the comment makes it produce no date
+
+\begin{document} % this is the formal beginning of the document. the stuff above essentially preloads files and gets prior info.
+\maketitle % don't want a title, author, or date listed? comment out this line.
+\tableofcontents % compile twice to have the TOC up to date; comment this line out for no TOC
+%\setlength{\parindent}{0in} % activate this to have no paragraph indentation
+\pagebreak
+
+텍스트를 제어하는 방법에 대해 본 \texttt{latex-intro-kr.tex} 및 \texttt{latex-intro-kr.pdf}를 읽어 친숙해지고, 함께 딸려오는 발표 슬라이드를 미리 읽어보기 강력 추천한다.
+
+\section{일반}
+
+\subsection{헤더 절(Header section)}
+
+\texttt{$\backslash$title}, \texttt{$\backslash$author}, \texttt{$\backslash$date} 을 예외로 하고, LaTeX 문서에 있어 이 부분이 종종 무시된다. 항상, 제목, 저자, 가능하면 날짜를 갱신하라. 그렇지 않는 경우 \texttt{$\backslash$maketitle} 명령어를 주석 처리하라. 추가적인 자세한 사항에 대해서는 발표 슬라이드를  참조한다.
+
+\subsection{개요 (Outline)}
+
+명령어 section 과 subsection 으로 장과 절을 만든다. 예를 들어, ``일반'' 은 장이 되고, ``헤더 절 (header section)'' 과 ``개요'' 는 절이 된다.
+
+\subsection{문단 (Paragraphs)}
+
+텍스트 사이에 간단하게 공백 두 줄을 넣으면 새로운 문단이 생성된다. 예를 들어, 이 문단은 ``엔터(enter)'' 키를 두번 치면 종료된다 (.tex 문서 참조) ... 
+이것은 새 문단은 아니다 (``엔터(enter)''를 한번만 침).
+
+하지만, 이것은 새 문단이다.  만약 추가 여백이 문단 사이에 필요하면, 역슬래쉬 두개 명령어를 사용하고 나서 ``엔터(enter)'' 키를 두번 친다... \\
+
+PDF 가 알아서 마지막 문단과 이 문단 사이에 공백을 삽입한다. \\
+
+
+\noindent 특정 문단에 들여쓰기를 하지 않으려면, 이 문단처럼, \texttt{$\backslash$noindent} 명령어를 사용한다.\\
+
+일반적으로, 추가로 많은 공백을                 넣어도 PDF 출력 텍스트에는                            영향이 없다. \texttt{$\backslash$pagebreak} 명령어로를 사용해서 새 페이지를 생성한다.
+
+\pagebreak
+
+\subsection{공백 (Spacing)}
+\label{spacing}
+
+수평 텍스트가 \texttt{$\backslash$hspace\{0.3cm\}} \hspace{0.3cm} 명령어를 사용해서 텍스트에 삽입될 수 있다. 명령어에 인자는 물론 좀더 크거나 작은 단위로 변경될 수 있다. 즉, 0.1cm, 2.5cm, 1.3in, 등등. 명령어 \texttt{$\backslash$vspace\{1.1cm\}} 도\\
+\vspace{1.1cm}
+
+
+\noindent 비슷한 방식으로 동작한다. \LaTeX 은 다른 선택옵션 몇가지와 더불어, \texttt{cm}, \texttt{mm}, \texttt{in}, 특정한 길이 단위도 받아들인다.
+
+\subsection{텍스트 (Text)}
+
+명령어를 사용해서 텍스트를 조작할 수도 있다. 예를 들어, \texttt{$\backslash$emph} 명령어를 사용해서 텍스트를 \emph{강조} (이태릭체) 한다.  {\em 텍스트를 이태릭체로 작성하는 방식이 몇가지 있다.} \{ 중괄호 \} 를 사용해서 명령어가 먹히는 곳을 잡아낸다. 이태릭체와 유사하게 텍스트를 {\bfseries 몇가지 방식으로} \textbf{굵은 글씨로} 표현할 수 있거나 텍스트에 {\color{red} 색깔}을 입힐 수도 있다. 
+\definecolor{myRed}{rgb}{.7,.2,.1} % RGB 시스템으로, 1번째 숫자는 빨강, 두번째 숫자는 녹색, 세번째 숫자는 청색을 표현.
+{\color{myRed} 이 색이 ``내가 정의한 색이다''}. % 색깔을 입힐 때는 ``color'' 팩키지가 포함되어야만 된다.
+또한, \texttt{타자수처럼 글자를 타이핑한다}. \\
+
+쉬프트(shift)-아포스트로피 키 조합을 사용해서 "큰 따옴표" 표시하면 \LaTeX 에서 미려하지 못하다. 대신에 왼쪽 큰 따옴표로 ``1 번'' 키옆에 아포스트로피를 두번, 오른쪽 큰 따옴표로 따옴표를 조합해서 사용한다. 즉, ``왼쪽 큰 따옴표와 오른쪽 큰 따옴표" .\\
+
+텍스트 크기도 {\tiny 매우 작게}(tiny), {\scriptsize 스크립트 크기}(scriptsize), {\footnotesize 주석 크기}(footnotesize), {\small 작게}(small), {\large 크게}(large), {\Large 아주 크게}(Large), {\LARGE 매우 크게}(LARGE) 등등 다양한 크기로 표현 가능하다. \\
+
+\subsection{매크로 (Macros)}
+
+일반적으로, 이번 절에서 사용된 명령어는 \textbf{매크로(Macros)}를 사용하면 찾을 수 있다. 예를 들어, TeXShop 프로그램에서 원하는 폰트 크기를 얻으려면, Macros $>$ Text Styles $>$ size 로 들어간다. 인용(quotation)도 시도해 보라 (Macros $>$ Insertions $>$ quotation ):
+
+\begin{quotation} %\em % perhaps you want it italicized?
+보통 문단에 포함하고 싶지 않은 매우 긴 인용될 수 있다. 그래서, 다른 한편으로 별도로 독립시켜서 보통 문단보다 좀더 적을 폭을 갖게 만든다. 만약 원한다면, 인용 시작지점에 $\backslash$em 을 사용해서 이러한 특별한 텍스트 전체를 쉽게 이태릭체로 만들 수 있다. 
+\end{quotation}
+
+\subsection{글머리표 (Lists)}
+
+앞선 하위 절은 다음과 같다... 
+\begin{itemize}
+\item 공백 (Spacing)
+\item 텍스트 (Text)
+\item 매크로 (Macros)
+\end{itemize}
+
+글머리표는 \texttt{itemize} 환경을 사용하거나, 만약 숫자형 글머리표를 원한다면, \texttt{enumerate} 를 사용한다:
+\begin{enumerate}
+\item 공백 (Spacing)
+\item 텍스트 (Text)
+\item 매크로 (Macros)
+\end{enumerate}
+
+하지만, 숫자는 하위 절과 매칭되어야 되고, 이 작업을 수행하는 선택옵션도 물론 있다....
+
+\begin{enumerate}
+\item[\ref{spacing}] 공백 (Spacing) % ref{} will be explained in the Tables section.
+\item[1.5] 텍스트 (Text)
+\item[1.6] 매크로 (Macros)
+\end{enumerate}
+
+\subsection{특수 문자 (Special characters)}
+
+\LaTeX 코드는 특수 문자를 많이 사용한다. 이것이 의미하는 바는 텍스트에 이러한 특수 문자를 넣으려면, \LaTeX 코드의 통상적인 목적에서 문자를 \emph{나오게}(escape) 만들어야 된다.
+예를 들어, 다음 문자를 나타내려면 명령어 각각은 역슬래쉬를 앞에 두는 것이 필요하다:  \#, \$, \{, \}, \&, \%, \_. $\backslash$ 와 $\sim$ 은 약간 더 호들갑을 떨어야 된다. 그리스 문자와 기호는 ~\ref{math} 절에서 소개된다.
+
+\subsection{글자 그대로 (verbatim)}
+명시적으로 텍스트를 정말 찍고자 한다면, 글자 그대로 (verbatim) 기능을 사용한다:
+
+\begin{verbatim}
+만약 \LaTeX 파일로 보고자 한다면, 이 모든 것이 정말 그대로 \emph{나타날 것이다}. % 와 주석(comment)도 글자 그대로 (verbatim)에서는 동작하지 않는다...
+\end{verbatim}
+
+\section{Tabbing}
+\label{tabbing}
+
+\subsection{Basic tabbing}
+
+Text can be indented using the indent command: \\
+\indent\indent\indent This is indented text. \\
+
+More importantly, custom tabbing can be created. For example
+\begin{tabbing}
+First tab \= Second tab \= There is no extra space \= between tabs by default. \\
+1 \> 2 \> 3 \> 4 \\
+one \> \> three \> four
+\end{tabbing}
+Cells can be blank, like in  the 3rd row, 2nd column. \\
+
+Using the command \texttt{$\backslash$hspace\{0.2cm\}} to make a little more space...
+\begin{tabbing}
+First tab\hspace{0.2cm} \= Second tab\hspace{0.2cm} \= Now there is extra space\hspace{0.2cm} \= between tabs. \\
+1 \> 2 \> 3 \> 4 \\
+one \> \> three \> four
+\end{tabbing}
+
+\subsection{Impromptu tabs}
+\label{impromptuTabs}
+
+New tabs can also be created partway in...
+\begin{tabbing}
+First tab\hspace{0.2cm} \= Second tab\hspace{0.2cm} \= Now there is extra space\hspace{0.2cm} \= between tabs. \\
+1 \> 2 \> 3 \> 4 \= 4.5 \\
+one \> \> three \> four \> where does this start?
+\end{tabbing}
+
+That didn't work out so well. Correcting using \texttt{$\backslash$hspace}...
+\begin{tabbing}
+First tab\hspace{0.2cm} \= Second tab\hspace{0.2cm} \= Now there is extra space\hspace{0.2cm} \= between tabs. \\ [2ex]  % [2ex] is used to make a little extra space (2 can be varied)
+1 \> 2 \> 3 \> 4\hspace{1.0cm} \= 4.5 \\
+one \> \> three \> four \> where does this start?
+\end{tabbing}
+
+\subsection{Tabbing example}
+
+Tabbing is an interesting environment to play in. A more serious tabbing creation (it gets a bit messy in LaTeX)... note that \texttt{$\backslash$hspace} can take a negative argument, otherwise components of this example would not be permitted.
+\begin{tabbing}
+\bfseries Test Name\hspace{0.17cm}
+	\= \bfseries Description \hspace{-2.0cm}
+	\= \hspace{4.0cm}
+	\=\hspace{3.5cm}
+	\= \bfseries Total number of trials \\[2ex] % [2ex] is used to make a little extra space
+Fixed Size
+	\> Upon collection of the data,
+	\>	\>	
+	\> $n_f(\alpha, \beta, \delta, \sigma^2)$  \\
+\>
+	\> if $|Z_k| \geq 1.96$
+	\> stop, reject $H_0$
+	\> \\
+\>
+	\> otherwise
+	\> stop, DNR $H_0$.
+	\> \\ [3ex]
+Pocock
+	\> After group $k=1,...,K-1$
+	\>	\>
+	\> $n_fR_P(K,\alpha,\beta)$ \\
+\>
+	\> if $|Z_k| \geq C_P(K,\alpha)$
+	\> stop, reject $H_0$
+	\> \\
+\>
+	\> otherwise
+	\> continue testing,
+	\> \\
+\>
+	after group $K$ (the last group)
+	\>	\>	\> \\
+\>
+	\> if $|Z_K| \geq C_P(K,\alpha)$
+	\> stop, reject $H_0$
+	\> \\
+\>
+	\> otherwise
+	\> stop, DNR $H_0$.
+	\> \\
+\end{tabbing}
+
+
+\section{Tables}
+
+\subsection{Basic tables}
+
+A basic table... \\
+
+\begin{tabular}{l c r} % lcr means make the 1st column left aligned, the 2nd centered, and the 3rd right aligned
+	Left & Center & Right \\ % the amperstands (&) define where to start the next column
+	1     & 2           & 3  \\
+\end{tabular}
+
+To center a table, create a centered environment around the table:
+\begin{center} % center the table
+\begin{tabular}{l  rrrr} % spaces between the letters in the alignment don't matter
+  \hline % add a horizontal line here
+ 		           & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\
+  \hline
+(Intercept) & -0.2852   & 0.8434     & -0.34    & 0.7452 \\
+x                & 0.4192    & 0.1499     & 2.80     & 0.0266 \\
+   \hline
+\end{tabular}
+\end{center} % stop centering
+
+Maybe you also want to add a vertical dividers (many more could be added, if desired)...
+
+\begin{center}
+\begin{tabular}{l | rrrr} % after the 'l' is a vertical bar to denote a vertical divider between these columns
+% there can be many vertical bars if you like (even doubles)
+  \hline
+   \hline % double horizontal lines are permitted
+ & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\
+  \hline
+(Intercept) & -0.2852 & 0.8434 & -0.34 & 0.7452 \\
+  x & 0.4192 & 0.1499 & 2.80 & 0.0266 \\
+   \hline
+   \hline
+\end{tabular}
+\end{center}
+
+Another table...
+\begin{center}
+\begin{tabular}{lp{7.5cm}r}
+\hline
+Left & Will be left-justified. & Right \\
+\hline
+1 & If the text becomes long in a column, then use \texttt{$\backslash$p\{7.5cm\}} or something of the equivalent instead of \texttt{l}, \texttt{c}, or \texttt{r} for alignment permits paragraphs to be written in the table in a nice format. This is also handy if you want careful control of your column widths. & 3 \\
+\hline
+\end{tabular}
+\end{center}
+
+
+\subsection{Captions and referencing}
+
+Want captions on your table? Use a table environment. These are called floating tables... they ``float'' around your page if you don't control them carefully, and sometimes still do even if you try to control them.
+
+\begin{table}[h] % [h] means "put the table here"... other options include
+			% t = top
+			% b = bottom
+			% p = page
+			% these options also are not be-all-end-all solution... sometimes tables go where you don't want them to and it is sometimes hard to control.
+			% listing multiple options is also permitted, e.g. [hbt] instead of [h]
+\begin{center}
+\begin{tabular}{l  rrrr}
+  \hline
+ & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\
+  \hline
+(Intercept) & -0.2852 & 0.8434 & -0.34 & 0.7452 \\
+  x & 0.4192 & 0.1499 & 2.80 & 0.0266 \\
+   \hline
+\end{tabular}
+\end{center}
+\caption{This is a caption.}
+\end{table}
+
+You can also \emph{automatically} build in references to tables (and figures, as shown later). For instance, the table below is Table~\ref{multRegression}. If it's table number were to change, the table number would update automatically after compiling the .tex document twice.
+
+Why twice? LaTeX reads its references in when it compiles (from one of those files that is produced when you compile... the ones we all ignore), however, the file it reads was made from the \emph{previous} compile. Thus, if you only compile once, the file you are reading might not be up-to-date. (Got it?)
+
+See \texttt{latexTemp.tex} for additional comments on references.
+
+% \ref{} references some \label{} command. The funny ~ sign puts a space between Table the reference but also does not let LaTeX do a line break immediately after ``Table" (which makes it look a little nicer)
+
+% references can actually be used in many many ways. For instance, to reference the section on tabbing, use \ref{tabbing}... \label{tabbing} was already placed at the start of that section so that section number could be referenced
+
+% again... if you use references, always compile your LaTeX document twice before depending on the labels to be accurate, i.e. compile twice before sending, submitting, or printing the work.
+
+\begin{table}[ht]
+\begin{center}
+\begin{tabular}{rrrrr}
+  \hline
+ & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\
+  \hline
+(Intercept) & -0.5758 & 1.4528 & -0.40 & 0.7056 \\
+  x & 0.3775 & 0.1971 & 1.92 & 0.1039 \\
+  z & 1.4042 & 1.7357 & 0.81 & 0.4494 \\
+   \hline
+\end{tabular}
+\end{center}
+\caption{Neither $x$ nor $z$ were found to be statistically significant.}
+\label{multRegression} % a label for the tabel (table).
+% if you want the label to work, you must have a caption (otherwise there is no number to reference)
+\end{table}
+
+\subsection{\texttt{array} environment}
+
+As we'll see in Section~\ref{math}, the \texttt{array} environment is very similar to the \texttt{tabular} environment, except that it is typically used for equations.
+
+\subsection{The R package, \texttt{xtable}}
+
+For R users who want to put R output into LaTeX, the package \texttt{xtable} is very useful:
+\begin{verbatim}
+> library(xtable) # to download the package, use install.packages('xtable')
+> x <- 1:9
+> z <- rnorm(9)
+> y <- x/7 + z*2 + rnorm(9)
+> xtable(summary(lm(y ~ x+z)))
+[... a bunch of output that can be copied/pasted into LaTeX ...]
+\end{verbatim}
+The resulting table, directly copied/pasted from R:
+% latex table generated in R 2.8.1 by xtable 1.5-4 package
+% Sat Apr 18 14:13:39 2009
+\begin{table}[ht]
+\begin{center}
+\begin{tabular}{rrrrr}
+  \hline
+ & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\
+  \hline
+(Intercept) & -0.1563 & 0.6243 & -0.25 & 0.8107 \\
+  x & 0.1094 & 0.1145 & 0.96 & 0.3760 \\
+  z & 2.6170 & 0.4308 & 6.08 & 0.0009 \\
+   \hline
+\end{tabular}
+\end{center}
+\end{table}
+This can also be used for matrices, data frames, and some other R objects.
+
+\section{Figures}
+
+\subsection{Basic figures}
+
+\includegraphics{lower40} % insert file ``lower40''
+			% (in the same folder as this document)
+			% no extension needed!
+
+Basic figures are made using the \texttt{$\backslash$includegraphics} command. The size can also be controlled via the optional \texttt{space} argument.
+
+\includegraphics[height=1.0in]{lower40} % using the space option: [height=1.0in]
+
+A figure can easily be centered in the same way a table was centered:
+\begin{center}
+\includegraphics[height=1.0in]{figures/lower82/lower82}
+\end{center}
+
+\subsection{Captions and referencing}
+
+Like tables, figures can also be ``floated'' and have captions/labels. The Templates give a nicer means to work with graphics. See Figure~\ref{figureTemplate}. Note that the Float Figure template from LaTeX does not include the space option, which you would need to add. \\
+\begin{figure}[htbp]
+	% as with floating tables, figures will float around the page and [htbp] offers some control
+   \centering % one method to center the figure
+   \includegraphics[height=2.0in]{figures/figureTemplate}
+   	% notice that the figure was referenced in a folder
+	% it is smart to manage your files carefully so not to make your 
+	%	main folder messy
+   \caption{Where to find your figure template.}
+   \label{figureTemplate}
+\end{figure}
+
+\subsection{Keeping organized}
+
+It is highly recommended that figures are organized into folders. This will keep the main folder from getting cluttered with lots of image files, like in Figure~\ref{messyFolder}. Figure~\ref{cleanFolder} shows a much better organization structure for the document figures. \\
+\begin{figure}[htbp]
+   \centering
+   \includegraphics[height=3.0in]{figures/messyFolder}
+   \caption{Don't do this. And name your files more carefully than this... ``slideshow'' is not specific.}
+   \label{messyFolder}
+\end{figure}
+\begin{figure}[htbp]
+   \centering
+   \includegraphics[height=1.8in]{figures/cleanFolder}
+   \caption{Organize your files more like this.}
+   \label{cleanFolder}
+\end{figure}
+
+
+\section{Math}
+\label{math}
+
+\subsection{Math in text}
+
+LaTeX makes it easy to add Greek letters like $\alpha$, $\zeta$,
+$\mu$, etc. into text. In the same way, equations can be added
+easily as well: $y=x^3$, $\sum z^j$, $x_1+\cdots+x_n$.
+\begin{center}
+\includegraphics[height=1.5cm]{figures/mathInText}
+\end{center}
+
+Greek letters and math expressions such as $\alpha$, $\zeta$, $y=\sqrt{x}\log(x)$ can be inserted easily using two dollar signs; it's just a matter of remembering what the commands are for each math expression or symbol. For example, $\alpha$ is created using \texttt{\$$\backslash$alpha\$}. Based on how $\alpha$ was created, how would you think to create $\beta$?
+
+The LaTeX and Matrix Panels have a large number of common symbols, letters, etc. and can be accessed by either \texttt{alt-command-[dash/underscore key]} or \texttt{alt-command-[+/= key]} in TeXShop or by navigating to them in the menu (see the ``Window'' menu in TeXShop). Some letters/symbols/etc that you can create... \\
+
+$\hbar\imath\jmath\ell\Re\Im\emptyset\infty\partial\nabla\triangle\forall\exists\nexists\top\bot\dag\ddag\sum\prod\int\oint\bigcap\cap\bigcup\cup\biguplus\bigoplus\bigotimes\bigodot\hat{a}\bar{a}\tilde{a}$ \\
+
+$\alpha\beta\gamma\delta\epsilon\varepsilon\zeta\eta\theta\iota\kappa\lambda\mu\nu\xi\pi\varpi\varrho
+\sigma\varsigma\tau\upsilon\phi\varphi\chi\psi\omega$ \\
+
+The number of available symbols is enormous. If you want the symbol, it probably exists in LaTeX. \\
+% try looking in this (very big) PDF for what you want if you cannot find it in the LaTeX Panel:
+%	www.ctan.org/tex-archive/info/symbols/comprehensive/symbols-a4.pdf
+
+
+There are a huge number of ways to construct expressions...
+\begin{eqnarray*} % we'll get to this new eqnarray environment in a moment...
+\sqrt{2}, \quad \frac{5}{2+3}=1, \quad \left(\frac{5}{2+3}\right), \quad 2^10 \neq 2^{10} = 1024, \quad x_1 = 3 \\
+\bar{x}, \quad 3 \geq x, \quad \lim_{x\to0}\left( \frac{\sin(x)}{x} \right) \to 1, \quad \frac{\sin(x)}{x}\stackrel{x\to0}{\to} 1
+% \quad inserts a little space
+% \frac has two arguments: the numerator and the denominator
+% \left( and \right) make parenthesis that automatically adjust to fit the size of the inside expression, i.e. (\frac{5}{2+3}) doesn't look very nice
+% ^ is used to make a superscript. in a similar way, _ is used for subscript
+% when making super or subscripts, put them in parenthesis if it is more than a single character, e.g. x_{subscript} or x^{superscript}.
+\end{eqnarray*}
+
+\subsection{Equation environment and referencing}
+
+Equations can also be put on their own line using the equation environment:
+\begin{eqnarray}
+A_{b_{ik}} % line breaks don't matter
+		% make sure the use braces if subscripting more than a single character (otherwise it won't work...
+		%	see 2^10 \neq 2^{10} = 1024 above
+	= \sum_{l=1}^{k}\sum_{j=1}^{i} \gamma^{\alpha_{b_{jl}}}
+\label{Abi}
+\end{eqnarray}
+Just like tables and figures, equations can also be referenced, such as Equation~\ref{Abi}. \\
+
+If you do not want a number assigned to your equation, use the \texttt{eqnarray$^*$} environment:
+\begin{eqnarray*}
+A_{b_{ik}} = \sum_{l=1}^{k}\sum_{j=1}^{i} \gamma^{\alpha_{b_{jl}}}
+\end{eqnarray*}
+One more example below in Equation~\ref{powerSeries}...
+\begin{eqnarray}
+\sum_{k=0}^{\infty}0.5^k = \frac{1}{1-0.5} = 2
+\label{powerSeries}
+\end{eqnarray}
+
+
+\subsection{Aligning}
+
+If there is a multiline equation, then use two amperstands (\&) if any alignment is desired:
+\begin{eqnarray*}
+y &=& (x-b)^2 + a \\ % a double-backslash must be used to create a new line
+&=& x^2 - 2bx + b^2 + a % the &'s around the equals signs on each line make them align
+\end{eqnarray*}
+If you don't use this, the alignment is usually poor.
+
+\subsection{Arrays}
+
+Arrays are easily constructed using the Matrix Panel:
+\begin{eqnarray*}
+\left(
+	\begin{array}{ccc}
+	\sigma_1^2 & \sigma_{1,2} & \sigma_{1,3} \\
+	\sigma_{2,1} & \sigma_{2}^2 & \sigma_{2,3} \\
+	\sigma_{3,1} & \sigma_{3,2} & \sigma_{3}^2
+	\end{array}
+\right)
+\end{eqnarray*}
+Array construction is essentally identical to tables, except now it is easy to insert mathematics.
+
+\subsection{Some benefits of the package \texttt{amsmath}}
+
+The package \texttt{amsmath} is not in the LaTeX template, however, it can be very handy.
+If you have a longer equation and only want a number for one line, then use \texttt{$\backslash$notag}:
+\begin{eqnarray}
+&&Cov\left( \left(\bar{X}_{A}^{(k_1)} - \bar{X}_{B}^{(k_1)}\right)\sqrt{I_{k_1}}, \left(\bar{X}_{A}^{(k_2)} - \bar{X}_{B}^{(k_2)}\right)\sqrt{I_{k_2}} \right) \notag \\
+&&\quad= Cov\left( \bar{X}_{A}^{(k_1)} - \bar{X}_{B}^{(k_1)}, \bar{X}_{A}^{(k_2)} - \bar{X}_{B}^{(k_2)}\right) \sqrt{I_{k_1}I_{k_2}} \notag \\ % \quad adds a little extra space
+&&\quad= Cov\left( \bar{X}_{A}^{(k_1)} - \bar{X}_{B}^{(k_1)}, \bar{X}_{A}^{(k_2)} - \bar{X}_{B}^{(k_2)}\right) \sqrt{I_{k_1}I_{k_2}}
+\end{eqnarray}
+The package \texttt{amsmath} is required to use this command. This package is also required if text is added to an equation using \texttt{$\backslash$text}:
+\begin{eqnarray*}
+\bar{x} = \sum_{i=1}^{n} x_i \quad \text{and} \quad \hat{\sigma} = \sqrt{\frac{1}{n-1}\sum_{i=1}^n(x_i-\bar{x})^2}
+\end{eqnarray*}
+Another example of \texttt{eqnarray$^*$} with \texttt{$\backslash$text}:
+\begin{eqnarray*}
+\text{estimated time} = \frac{\text{distance of travel}}{\text{speed of the car}} + \text{any delays}
+\end{eqnarray*}
+
+\section{Practice}
+
+Create a new document and produce the 3 items below. Be sure to update the \texttt{$\backslash$title} and \texttt{$\backslash$author} in your new document.
+
+\subsection{Try it \#1}
+
+Make the output shown in Figure~\ref{tryIt1} using the \texttt{tabular} environment.
+\begin{figure}[htbp]
+   \centering
+   \includegraphics[height=0.8in]{tryIt/tryIt1}
+   \caption{Try it \#1.}
+   \label{tryIt1}
+\end{figure}
+
+\subsection{Try it \#2}
+
+Make the following image 0.8 inches tall, center it, add a caption, and add a reference. Write a sentence referencing the figure (using \texttt{$\backslash$ref}) as well and compile your LaTeX document twice so the reference works. (If you use the Float Figure Template be sure to add the height option... alternatively, you might use an earlier LaTeX example as a template.) \\
+\includegraphics{figures/lower82/lower82}
+
+\subsection{Try it \#3}
+
+Produce the equation in Figure~\ref{tryIt3} using the \texttt{eqnarray$^*$} environment.
+\begin{figure}[htbp]
+   \centering
+   \includegraphics[height=0.5in]{tryIt/tryIt3}
+   \caption{Try it \#3.}
+   \label{tryIt3}
+\end{figure}
+
+
+\section{Bibliography stuff}
+
+A point pattern is described as a realization of a point process \citep{daley}, and several one-dimensional distance functions for point patterns are described in \citet{victor}.
+
+\bibliographystyle{biblio/simpleStyle}
+\bibliography{biblio/bibDB}
+
+
+\end{document}  

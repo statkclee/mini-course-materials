@@ -1,0 +1,34 @@
+\contentsline {section}{\numberline {제\nobreakspace {}1\nobreakspace {}절}일반}{3}
+\contentsline {subsection}{\numberline {1.1}헤더 절(Header section)}{3}
+\contentsline {subsection}{\numberline {1.2}개요 (Outline)}{3}
+\contentsline {subsection}{\numberline {1.3}문단 (Paragraphs)}{3}
+\contentsline {subsection}{\numberline {1.4}공백 (Spacing)}{4}
+\contentsline {subsection}{\numberline {1.5}텍스트 (Text)}{4}
+\contentsline {subsection}{\numberline {1.6}매크로 (Macros)}{4}
+\contentsline {subsection}{\numberline {1.7}글머리표 (Lists)}{4}
+\contentsline {subsection}{\numberline {1.8}특수 문자 (Special characters)}{5}
+\contentsline {subsection}{\numberline {1.9}글자 그대로 (verbatim)}{5}
+\contentsline {section}{\numberline {제\nobreakspace {}2\nobreakspace {}절}Tabbing}{5}
+\contentsline {subsection}{\numberline {2.1}Basic tabbing}{5}
+\contentsline {subsection}{\numberline {2.2}Impromptu tabs}{6}
+\contentsline {subsection}{\numberline {2.3}Tabbing example}{6}
+\contentsline {section}{\numberline {제\nobreakspace {}3\nobreakspace {}절}Tables}{7}
+\contentsline {subsection}{\numberline {3.1}Basic tables}{7}
+\contentsline {subsection}{\numberline {3.2}Captions and referencing}{7}
+\contentsline {subsection}{\numberline {3.3}\texttt {array} environment}{8}
+\contentsline {subsection}{\numberline {3.4}The R package, \texttt {xtable}}{8}
+\contentsline {section}{\numberline {제\nobreakspace {}4\nobreakspace {}절}Figures}{9}
+\contentsline {subsection}{\numberline {4.1}Basic figures}{9}
+\contentsline {subsection}{\numberline {4.2}Captions and referencing}{9}
+\contentsline {subsection}{\numberline {4.3}Keeping organized}{9}
+\contentsline {section}{\numberline {제\nobreakspace {}5\nobreakspace {}절}Math}{10}
+\contentsline {subsection}{\numberline {5.1}Math in text}{10}
+\contentsline {subsection}{\numberline {5.2}Equation environment and referencing}{11}
+\contentsline {subsection}{\numberline {5.3}Aligning}{12}
+\contentsline {subsection}{\numberline {5.4}Arrays}{12}
+\contentsline {subsection}{\numberline {5.5}Some benefits of the package \texttt {amsmath}}{12}
+\contentsline {section}{\numberline {제\nobreakspace {}6\nobreakspace {}절}Practice}{13}
+\contentsline {subsection}{\numberline {6.1}Try it \#1}{13}
+\contentsline {subsection}{\numberline {6.2}Try it \#2}{13}
+\contentsline {subsection}{\numberline {6.3}Try it \#3}{13}
+\contentsline {section}{\numberline {제\nobreakspace {}7\nobreakspace {}절}Bibliography stuff}{14}
