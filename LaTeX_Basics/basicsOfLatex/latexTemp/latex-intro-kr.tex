@@ -117,101 +117,108 @@ PDF 가 알아서 마지막 문단과 이 문단 사이에 공백을 삽입한�
 만약 \LaTeX 파일로 보고자 한다면, 이 모든 것이 정말 그대로 \emph{나타날 것이다}. % 와 주석(comment)도 글자 그대로 (verbatim)에서는 동작하지 않는다...
 \end{verbatim}
 
-\section{Tabbing}
+\section{탭 (Tabbing)}
 \label{tabbing}
 
-\subsection{Basic tabbing}
+\subsection{기본 태빙 (Basic tabbing)}
 
-Text can be indented using the indent command: \\
-\indent\indent\indent This is indented text. \\
+indent 명령어를 사용해서 텍스트를 들여쓰기한다: \\
+\indent\indent\indent 이것이 들여쓰기한 텍스트다:\\
 
-More importantly, custom tabbing can be created. For example
+좀더 중요하게, 사용자 정의 태빙도 만들 수 있다. 예를 들어, 
+
 \begin{tabbing}
-First tab \= Second tab \= There is no extra space \= between tabs by default. \\
+첫번째 탭 \= 두번째 탭 \= 디폴트 기본설정으로 탭 사이에 \= 여분 공간은 없다. \\
 1 \> 2 \> 3 \> 4 \\
-one \> \> three \> four
-\end{tabbing}
-Cells can be blank, like in  the 3rd row, 2nd column. \\
-
-Using the command \texttt{$\backslash$hspace\{0.2cm\}} to make a little more space...
-\begin{tabbing}
-First tab\hspace{0.2cm} \= Second tab\hspace{0.2cm} \= Now there is extra space\hspace{0.2cm} \= between tabs. \\
-1 \> 2 \> 3 \> 4 \\
-one \> \> three \> four
+하나 \> \> 셋 \> 넷
 \end{tabbing}
 
-\subsection{Impromptu tabs}
+세번째 줄 두번째 열처럼, 셀은 공백이 될 수도 있다. \\
+
+\texttt{$\backslash$hspace\{0.2cm\}} 명령어를 사용해서, 좀더 많은 공백을 넣을 수 있다...
+
+\begin{tabbing}
+첫번째 탭\hspace{0.2cm} \= 두번째 탭\hspace{0.2cm} \= 이제 탭 사이에 \hspace{0.2cm} \= 추가 공백이 생겼다. \\
+1 \> 2 \> 3 \> 4 \\
+하나 \> \> 셋 \> 넷
+\end{tabbing}
+
+\subsection{즉흥 탭 (Impromptu tabs)}
 \label{impromptuTabs}
 
-New tabs can also be created partway in...
+새로운 탭을 중도에 생성할 수도 있다...
+
 \begin{tabbing}
-First tab\hspace{0.2cm} \= Second tab\hspace{0.2cm} \= Now there is extra space\hspace{0.2cm} \= between tabs. \\
+첫번째 탭\hspace{0.2cm} \= 두번째 탭\hspace{0.2cm} \= 이제 탭 사이에 \hspace{0.2cm} \= 추가 공백이 있다. \\
 1 \> 2 \> 3 \> 4 \= 4.5 \\
-one \> \> three \> four \> where does this start?
+하나 \> \> 셋 \> 넷 \> 이것은 어디서 시작할까요?
 \end{tabbing}
 
-That didn't work out so well. Correcting using \texttt{$\backslash$hspace}...
+그렇게 잘 동작하지 않는다. \texttt{$\backslash$hspace} 을 사용해서 수정한다...
+
 \begin{tabbing}
-First tab\hspace{0.2cm} \= Second tab\hspace{0.2cm} \= Now there is extra space\hspace{0.2cm} \= between tabs. \\ [2ex]  % [2ex] is used to make a little extra space (2 can be varied)
+첫번째 탭\hspace{0.2cm} \= 두번째 탭\hspace{0.2cm} \= 이제 탭 사이에 \hspace{0.2cm} \= 추가 공백이 있다. \\ [2ex]  % [2ex] is used to make a little extra space (2 can be varied)
 1 \> 2 \> 3 \> 4\hspace{1.0cm} \= 4.5 \\
-one \> \> three \> four \> where does this start?
+하나 \> \> 셋 \> 넷 \> 이것은 어디서 시작할까요?
 \end{tabbing}
 
-\subsection{Tabbing example}
+\subsection{태빙 예제 (Tabbing example)}
 
-Tabbing is an interesting environment to play in. A more serious tabbing creation (it gets a bit messy in LaTeX)... note that \texttt{$\backslash$hspace} can take a negative argument, otherwise components of this example would not be permitted.
+태빙은 흥미로운 환경이다. 좀더 만만찮은 태빙 생성은 (\LaTeX 를 다소 난잡하게 만든다) ...
+\texttt{$\backslash$hspace} 명령어는 음수 인자를 받아들일 수 있다. 그렇지 않다면, 다음 예제의 구성요소는 허락되지 않는다.
+
 \begin{tabbing}
-\bfseries Test Name\hspace{0.17cm}
-	\= \bfseries Description \hspace{-2.0cm}
+\bfseries 테스트 명칭\hspace{0.17cm}
+	\= \bfseries 기술 \hspace{-2.0cm}
 	\= \hspace{4.0cm}
 	\=\hspace{3.5cm}
-	\= \bfseries Total number of trials \\[2ex] % [2ex] is used to make a little extra space
-Fixed Size
-	\> Upon collection of the data,
+	\= \bfseries 전체 시험 횟수 \\[2ex] % [2ex] is used to make a little extra space
+고정 크기 
+	\> 데이터 수집 시에
 	\>	\>	
 	\> $n_f(\alpha, \beta, \delta, \sigma^2)$  \\
 \>
-	\> if $|Z_k| \geq 1.96$
-	\> stop, reject $H_0$
+	\> 만약 $|Z_k| \geq 1.96$ 이면,
+	\> 정지하고, $H_0$ 를 기각.
 	\> \\
 \>
-	\> otherwise
-	\> stop, DNR $H_0$.
+	\> 그렇지 않으면,
+	\> 정지하고, $H_0$ 를기각하지 않는다. 
 	\> \\ [3ex]
-Pocock
-	\> After group $k=1,...,K-1$
+포콕 (Pocock)
+	\> $k=1,...,K-1$ 집단 다음에, 
 	\>	\>
 	\> $n_fR_P(K,\alpha,\beta)$ \\
 \>
-	\> if $|Z_k| \geq C_P(K,\alpha)$
-	\> stop, reject $H_0$
+	\> 만약 $|Z_k| \geq C_P(K,\alpha)$ 이면,
+	\> 멈추고, $H_0$ 를 기각.
 	\> \\
 \>
-	\> otherwise
-	\> continue testing,
+	\> 그렇지 않다면, 
+	\> 테스트를 계속한다.
 	\> \\
 \>
-	after group $K$ (the last group)
+	$K$ 집단 후에 (마지막 집단)
 	\>	\>	\> \\
 \>
-	\> if $|Z_K| \geq C_P(K,\alpha)$
-	\> stop, reject $H_0$
+	\> 만약 $|Z_K| \geq C_P(K,\alpha)$ 이면,
+	\> 멈추고, $H_0$ 를 기각.
 	\> \\
 \>
-	\> otherwise
-	\> stop, DNR $H_0$.
+	\> 그렇지 않다면,
+	\> 멈추고, $H_0$ 를 기각하지 않는다.
 	\> \\
 \end{tabbing}
 
 
-\section{Tables}
+\section{표 (Tables)}
 
-\subsection{Basic tables}
+\subsection{기본 표 (Basic tables)}
 
-A basic table... \\
+기본 표는... \\
 
-\begin{tabular}{l c r} % lcr means make the 1st column left aligned, the 2nd centered, and the 3rd right aligned
-	Left & Center & Right \\ % the amperstands (&) define where to start the next column
+\begin{tabular}{l c r} % lcr 은 첫번째 열은 왼쪽 정렬, 두번째 열은 중간 정렬, 세번째 열은 오른쪽 정렬.
+	왼쪽 정렬 & 중간 정렬 & 오른쪽 정렬 \\ % 앰퍼샌드(&) 가 다음 열이 시작되는 위치를 지정한다.
 	1     & 2           & 3  \\
 \end{tabular}
 
