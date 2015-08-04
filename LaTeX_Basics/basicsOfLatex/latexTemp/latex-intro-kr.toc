@@ -8,12 +8,12 @@
 \contentsline {subsection}{\numberline {1.7}글머리표 (Lists)}{4}
 \contentsline {subsection}{\numberline {1.8}특수 문자 (Special characters)}{5}
 \contentsline {subsection}{\numberline {1.9}글자 그대로 (verbatim)}{5}
-\contentsline {section}{\numberline {제\nobreakspace {}2\nobreakspace {}절}Tabbing}{5}
-\contentsline {subsection}{\numberline {2.1}Basic tabbing}{5}
-\contentsline {subsection}{\numberline {2.2}Impromptu tabs}{6}
-\contentsline {subsection}{\numberline {2.3}Tabbing example}{6}
-\contentsline {section}{\numberline {제\nobreakspace {}3\nobreakspace {}절}Tables}{7}
-\contentsline {subsection}{\numberline {3.1}Basic tables}{7}
+\contentsline {section}{\numberline {제\nobreakspace {}2\nobreakspace {}절}탭 (Tabbing)}{5}
+\contentsline {subsection}{\numberline {2.1}기본 태빙 (Basic tabbing)}{5}
+\contentsline {subsection}{\numberline {2.2}즉흥 탭 (Impromptu tabs)}{6}
+\contentsline {subsection}{\numberline {2.3}태빙 예제 (Tabbing example)}{6}
+\contentsline {section}{\numberline {제\nobreakspace {}3\nobreakspace {}절}표 (Tables)}{7}
+\contentsline {subsection}{\numberline {3.1}기본 표 (Basic tables)}{7}
 \contentsline {subsection}{\numberline {3.2}Captions and referencing}{7}
 \contentsline {subsection}{\numberline {3.3}\texttt {array} environment}{8}
 \contentsline {subsection}{\numberline {3.4}The R package, \texttt {xtable}}{8}
