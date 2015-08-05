@@ -9,26 +9,26 @@
 \contentsline {subsection}{\numberline {1.8}특수 문자 (Special characters)}{5}
 \contentsline {subsection}{\numberline {1.9}글자 그대로 (verbatim)}{5}
 \contentsline {section}{\numberline {제\nobreakspace {}2\nobreakspace {}절}탭 (Tabbing)}{5}
-\contentsline {subsection}{\numberline {2.1}기본 태빙 (Basic tabbing)}{5}
+\contentsline {subsection}{\numberline {2.1}태빙 기초(Basic tabbing)}{5}
 \contentsline {subsection}{\numberline {2.2}즉흥 탭 (Impromptu tabs)}{6}
 \contentsline {subsection}{\numberline {2.3}태빙 예제 (Tabbing example)}{6}
 \contentsline {section}{\numberline {제\nobreakspace {}3\nobreakspace {}절}표 (Tables)}{7}
-\contentsline {subsection}{\numberline {3.1}기본 표 (Basic tables)}{7}
-\contentsline {subsection}{\numberline {3.2}Captions and referencing}{7}
-\contentsline {subsection}{\numberline {3.3}\texttt {array} environment}{8}
-\contentsline {subsection}{\numberline {3.4}The R package, \texttt {xtable}}{8}
-\contentsline {section}{\numberline {제\nobreakspace {}4\nobreakspace {}절}Figures}{9}
-\contentsline {subsection}{\numberline {4.1}Basic figures}{9}
-\contentsline {subsection}{\numberline {4.2}Captions and referencing}{9}
-\contentsline {subsection}{\numberline {4.3}Keeping organized}{9}
-\contentsline {section}{\numberline {제\nobreakspace {}5\nobreakspace {}절}Math}{10}
-\contentsline {subsection}{\numberline {5.1}Math in text}{10}
-\contentsline {subsection}{\numberline {5.2}Equation environment and referencing}{11}
-\contentsline {subsection}{\numberline {5.3}Aligning}{12}
-\contentsline {subsection}{\numberline {5.4}Arrays}{12}
-\contentsline {subsection}{\numberline {5.5}Some benefits of the package \texttt {amsmath}}{12}
-\contentsline {section}{\numberline {제\nobreakspace {}6\nobreakspace {}절}Practice}{13}
-\contentsline {subsection}{\numberline {6.1}Try it \#1}{13}
-\contentsline {subsection}{\numberline {6.2}Try it \#2}{13}
-\contentsline {subsection}{\numberline {6.3}Try it \#3}{13}
-\contentsline {section}{\numberline {제\nobreakspace {}7\nobreakspace {}절}Bibliography stuff}{14}
+\contentsline {subsection}{\numberline {3.1}표 기초(Basic tables)}{7}
+\contentsline {subsection}{\numberline {3.2}캡션과 참조 (Captions and referencing)}{7}
+\contentsline {subsection}{\numberline {3.3}\texttt {array} 환경}{8}
+\contentsline {subsection}{\numberline {3.4}R 팩키지, \texttt {xtable}}{8}
+\contentsline {section}{\numberline {제\nobreakspace {}4\nobreakspace {}절}그림 (Figures)}{9}
+\contentsline {subsection}{\numberline {4.1}그림 기초 (Basic figures)}{9}
+\contentsline {subsection}{\numberline {4.2}캡션과 참조하기 (Captions and referencing)}{9}
+\contentsline {subsection}{\numberline {4.3}체계화 정리하기 (Keeping organized)}{10}
+\contentsline {section}{\numberline {제\nobreakspace {}5\nobreakspace {}절}수학 (Math)}{11}
+\contentsline {subsection}{\numberline {5.1}텍스트 내부 수학 (Math in text)}{11}
+\contentsline {subsection}{\numberline {5.2}방정식 환경과 참조 (Equation environment and referencing)}{12}
+\contentsline {subsection}{\numberline {5.3}줄 맞추기 (Aligning)}{12}
+\contentsline {subsection}{\numberline {5.4}배열 (Arrays)}{12}
+\contentsline {subsection}{\numberline {5.5} \texttt {amsmath} 팩키지 사용 시 몇가지 장점}{13}
+\contentsline {section}{\numberline {제\nobreakspace {}6\nobreakspace {}절}실습 (Practice)}{13}
+\contentsline {subsection}{\numberline {6.1} 시도해 보자 \#1}{13}
+\contentsline {subsection}{\numberline {6.2}시도해 보자 \#2}{13}
+\contentsline {subsection}{\numberline {6.3}시도해 보자 \#3}{14}
+\contentsline {section}{\numberline {제\nobreakspace {}7\nobreakspace {}절}참고문헌 관련}{14}
