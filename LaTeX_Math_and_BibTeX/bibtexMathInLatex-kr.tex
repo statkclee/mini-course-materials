@@ -1,0 +1,112 @@
+\documentclass[slidestop,compress,mathserif]{beamer}
+\usetheme{Frankfurt}
+\usecolortheme{seagull}
+
+% Load packages
+\usepackage{alltt}
+\usepackage{verbatim}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{epstopdf}
+\usepackage{verbatim}
+%\usepackage{musixtex}
+%\usepackage{xymtexps}
+\usepackage{feynmp}
+
+%\usepackage{pgfpages}
+%\pgfpagesuselayout{4 on 1}[letterpaper,landscape,border shrink=5mm]
+\usepackage[hangul]{kotex}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+
+% Title 
+% Note: [short title]{long title}, [short author(s) name]{long author(s) name}
+\title{\LaTeX 소개 2부 : 수학, BibTeX, 사용자 정의}
+\subtitle{공개 통계학 개론 (OpenIntro Stat.) 저작 학습용}
+
+\author{David Diez \inst{1} \and 이광춘\scriptsize{(번역)} \inst{2}} 
+\institute{\inst{1} OpenIntro \href{http://www.openintro.org}{openintro.org} \and \inst{2} xwMOOC \href{http://www.xwmooc.net}{xwmooc.net}}
+\date{}
+
+\begin{document}
+\definecolor{highlight}{rgb}{.7,.1,.1}
+\definecolor{command}{rgb}{.1,.1,.9}
+\definecolor{comment}{rgb}{1,0,0}
+\definecolor{braces}{rgb}{0,0.5,0}
+\newenvironment{act}[1]{{\color{command}#1}}{}
+\newcommand{\lcom}[1]{{\color{command}$\backslash$#1}}
+\newcommand{\larg}[1]{{\color{braces}$\{${\color{black}#1}$\}$}}
+\newcommand{\mathText}[1]{{\color{braces}\${\color{black}#1}\$}}
+
+
+\frame{ \titlepage }
+
+\begin{frame}
+  \frametitle{목차}
+  \begin{itemize}
+  \item \LaTeX 수학
+  \item BibTeX: \LaTeX 참고문헌
+  \item 사용자 정의 명령어와 환경 만들기
+  \item 기타 비법
+  \end{itemize}
+\end{frame}
+
+\begin{frame}  \frametitle{Guide to LaTeX}
+\textit{Guide to LaTeX} 책에는 \LaTeX에 대한 멋진 안내가 나와 있고, 이번 학습에서 이 책에서 나온 예제 일부를 충실히 따라간다:
+\begin{itemize}
+\item[7] 수학
+\item[11,12] BibTeX
+\item[10] 사용자 정의 명령어와 환경
+\end{itemize}
+
+\LaTeX에 관한 학습교재를 찾는다면, \textit{Guide to LaTeX} 책은 훌륭한 대안이 될 수 있다.
+\end{frame}
+
+\part{}
+
+\include{math/math}
+%\include{bibtex/bibtex}
+%\include{comenv/comenv}
+
+\section[Wrap-up]{Wrap-up}
+\subsection[Wrap-up]{Wrap-up}
+
+\begin{frame}  \frametitle{Organizer and time saver}
+The {\color{command}$\backslash$include} command is useful for long documents:
+\vspace{1mm} \\
+\begin{itemize}
+\item[] {\color{command}$\backslash$include}{\color{braces}$\{${\color{black}otherDocName}$\}$}
+\end{itemize}
+\vspace{1mm}
+For instance, this presentation actually calls three separate documents: one for each big section. Thus I would not take time Typesetting parts of the document I was not working on while keeping organized:
+\vspace{1mm} \\
+\begin{itemize}
+\item[] \lcom{include}\larg{math/math} {\color{red}\% ``math'' document in the ``math'' folder}
+\item[] {\color{red}\%$\backslash$include$\{${bibtex/bibtex}$\}$}
+\item[] {\color{red}\%$\backslash$include$\{${comenv/comenv}$\}$}
+\end{itemize}
+\end{frame}
+
+\begin{frame}  \frametitle{Wrap-up}
+After this class, you should have a general idea of
+\vspace{1mm} \\
+\begin{itemize}
+\item using the math modes in LaTeX,
+\item creating bibliographies using BibTeX, and
+\item creating your own commands and environments.
+\end{itemize}
+\vspace{1mm}
+Any questions?
+\end{frame}
+
+
+
+
+
+\end{document}
