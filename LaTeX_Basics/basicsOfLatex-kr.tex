@@ -1,0 +1,579 @@
+%\documentclass[slidestop,compress,mathserif]{beamer}
+\documentclass[10pt]{beamer}
+\usetheme{Frankfurt}
+\usecolortheme{seagull}
+
+% Load packages
+\usepackage{alltt}
+\usepackage{verbatim}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{epstopdf}
+\usepackage{feynmp}
+\usepackage{authblk}
+\usepackage[hangul]{kotex}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+%\usepackage{setspace}
+
+%\usepackage{pgfpages}
+%\pgfpagesuselayout{4 on 1}[letterpaper,landscape,border shrink=5mm]
+    \usepackage{kotex-logo}
+    \usepackage{iftex}
+    \ifPDFTeX
+      \usepackage{dhucs-nanumfont}
+      \hypersetup{pdftex,unicode,bookmarks}
+      \input glyphtounicode
+      \pdfgentounicode=1
+    \else\ifXeTeX
+      \setmainhangulfont[Ligatures=TeX]{HCR Batang LVT}
+      \setsanshangulfont[Ligatures=TeX]{HCR Dotum LVT}
+    \else\ifLuaTeX
+      \hypersetup{unicode,bookmarks}
+      \setmainhangulfont[Ligatures=TeX]{HCR Batang LVT}
+      \setsanshangulfont[Ligatures=TeX]{HCR Dotum LVT}
+    \fi\fi\fi
+
+\providecommand\thispdfpagelabel[1]{}
+
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+
+% Title 
+% Note: [short title]{long title}, [short author(s) name]{long author(s) name}
+\title{\LaTeX\ 소개}
+\subtitle{공개 통계학 개론 (OpenIntro Stat.) 저작 학습용}
+
+\author[David]{}
+%\author{David Diez \inst{1} \and 이광춘(번역) \inst{2}} 
+\institute{\inst{1} \href{http://www.openintro.org}{openintro.org} \and \inst{2} \href{http://www.xwmooc.net}{xwMOOC} }
+\newcommand{\samelineand}{\qquad}
+
+
+\date{}
+
+\begin{document}
+\definecolor{highlight}{rgb}{.7,.1,.1}
+\definecolor{command}{rgb}{.1,.1,.9}
+\definecolor{comment}{rgb}{1,0,0}
+\definecolor{braces}{rgb}{0,0.5,0}
+\newenvironment{act}[1]{{\color{command}#1}}{}
+
+
+\frame{ \titlepage }
+
+\begin{frame}
+  \frametitle{목차}
+  \begin{itemize}
+  \item \LaTeX\ 인터페이스 소개
+  \item 텍스트 작업 
+  \item 탭과 표
+  \item 그림
+%  \item Math and equations
+  \end{itemize}
+\end{frame}
+
+\part{}
+
+\section[시작하기]{시작하기}
+
+\subsection[시작하기]{시작하기}
+
+\begin{frame} \frametitle{\LaTeX 설치}
+{\bf 맥(Mac) 설치. } {\color{highlight}http://www.tug.org/mactex/} 사이트에서 MacTeX을 다운로드한다. MacTeX 설치에 포함된 \LaTeX\은 TeXShop 프로그램으로 접근해 사용한다. \\
+\vspace{0.3cm}
+
+{\bf 윈도우(Windows) 설치. } {\color{highlight}http://www.tug.org/protext/}\footnote{또다른 선택옵션: {\color{highlight}http://www.winshell.de/}. (Winshell 과 MikTeX)} 사이트에서 ProTeXt 를 다운로한다. ProTeXt 실치에 포함된 TeXnicCenter 프로그램으로 접근해 사용한다. \\
+\vspace{0.3cm}
+
+MacTeX 과 proTeXt 모두 대용량이다: 각각 1.2GB 와 540MB. \\
+\vspace{0.3cm}
+
+맥, 윈도우, 리눅스(TexWorks) 인터페이스는 다르지만, \LaTeX ``코드''는 \textbf{세가지 플랫폼} 모두 동작한다.
+\end{frame}
+
+\begin{frame} \frametitle{TeXShop 열기}
+{\color{highlight}Finder (아이콘: \hspace{1mm}\includegraphics[height=0.28cm]{basicsOfLatex/gettingStarted/finder}\hspace{1mm}) $\to$ Applications $>$ TeX $>$ TeXShop} \\
+\begin{center}
+\includegraphics[height=1.7in]{basicsOfLatex/gettingStarted/openingTexshop}
+\end{center}
+\end{frame}
+
+\begin{frame} \frametitle{기본 문서 생성하기}
+{\bf 파일 열기. } 만약 아직 문서가 열려있지 않다면, {\color{highlight}File $>$ New} 혹은 \texttt{\color{highlight}command-N} (\texttt{\color{highlight}\emph{apple}-N}) 을 사용해서 새문서를 연다. \\
+\vspace{0.7cm}
+
+{\bf 템플릿 (Templates). } LatexTemplate 을 선택한다.
+\begin{center}
+\includegraphics[height=0.95in]{basicsOfLatex/gettingStarted/chooseTemplate}
+\end{center}
+\end{frame}
+
+
+\begin{frame} \frametitle{기본 문서 생성하기}
+\texttt{\color{command}$\backslash$title}, \texttt{\color{command}$\backslash$author} 정보를 갱신하고 나서, 마지막 행위에 문장을 타이핑한다. 즉, \texttt{\color{command}$\backslash$end}{\color{braces}\{}document{\color{braces}\}} 바로 위에 타이핑한다. 바탕화면에 디렉토리를 생성하고 나서 작성한 해당 \LaTeX 파일을 그 디렉토리 안에 저장한다.
+
+\begin{center}
+\includegraphics[height=2.0in]{basicsOfLatex/gettingStarted/firstDoc}
+\end{center}
+\end{frame}
+
+
+\begin{frame} \frametitle{조판(Typesetting) / 컴파일}
+
+윈도우 좌상에 위치한 \texttt{\color{highlight}command-T} 단축키 혹은 {\color{highlight}조판}(Typeset) 버튼을 클릭한다. 조판을 한뒤에 확대하려면 PDF 페이지에서 두번 클릭한다. 세번 클릭, 네번 클릭도 시도해 본다.
+
+\begin{center}
+\includegraphics[height=2.0in]{basicsOfLatex/gettingStarted/firstOutput}
+\end{center}
+\end{frame}
+
+
+\begin{frame} \frametitle{더 추가된 파일}
+조판을 하면 다른 파일이 많이 생성된다.
+\begin{center}
+\includegraphics[height=1.0in]{basicsOfLatex/gettingStarted/outputFiles}
+\end{center}
+
+자동 생성된 파일 각각이 특별한 목적이 있지만, 단지 한 파일 -- 원 \LaTeX\ 파일에 추가해서 -- 만 관심있다: PDF. 더 많은 \LaTeX\ 방법을 사용하면, \LaTeX] 출력 파일 목록이 증가할 것이다... 하지만, 다시 한번, \LaTeX\ 을 사용하는 대부분 경우에 .tex 와 .pdf 파일을 제외하고 파일 대부분은 무시된다. 
+\end{frame}
+
+\begin{frame} \frametitle{콘솔(Console)}
+
+코드가 조판될 때, 윈도우 두개가 불쑥 팝업된다. {\color{highlight}콘솔}(console)은 문서를 만들어낼 때 \LaTeX\이 무슨 작업을 수행하는지 일러준다. 만약 오류(혹은 \LaTeX\이 원치않는 것)가 있다면, 콘솔이 일러준다. 만약 오류가 심대하면, \LaTeX\이 컴파일을 중지한다:
+
+\begin{center}
+\includegraphics[height=1.1in]{basicsOfLatex/gettingStarted/consoleFail}
+\end{center}
+항상 문제를 즉시 고치는 것이 좋다 (\includegraphics[height=0.25cm]{basicsOfLatex/gettingStarted/gotoError}를 누른다), 일부 오류는 {\color{highlight}엔터}(enter 혹은 return)키를 치고 무시하고 넘어간다.
+\end{frame}
+
+
+\begin{frame} \frametitle{오류는 피할 수 없다.}
+오류가 \LaTeX 에서는 흔하다. 오류 식별을 돕기 위해서, 자주 조판할 것을 추천한다. 몇문장마다 조판해서 출력결과가 예상한 것과 매칭이 되는지 확인한다. \LaTeX 이 문서를 처리하는 동안에 작업을 계속 진행할 수 있다. \\
+\vspace{0.3cm}
+
+작업을 하면서 좀더 말이 되는 일만적인 오류...
+\begin{itemize}
+\item 명령어 철자 오류
+\item 특수 문자에서 빠져나오지 않음 (이스케이핑, Escaping)
+\item {\color{braces}\{}중괄호{\color{braces}\}} 짝을 맞추지 않음
+\item {\color{braces}\$} 기호 짝을 맞추치지 않음
+\item 시작 환경과 끝 환경 짝을 맞추지 않음. (즉, \texttt{\color{command}$\backslash$begin\color{braces}\{\color{black}document\color{braces}\}} 와 \texttt{\color{command}$\backslash$end\color{braces}\{\color{black}document\color{braces}\}})
+\end{itemize}
+\end{frame}
+
+
+\begin{frame} \frametitle{주석}
+방금 생성한 기본 파일로 돌아가자. 빨간색(윈도우에서 회색)으로 된 것은 무엇일까? 주석으로 \LaTeX 에서 무시된다. 주석은 퍼센트 기호로 작성된다 : {\color{comment}\%}.
+
+%\begin{tabbing} \small
+%\hspace{1cm} \= text text text text text text text text text \\
+%	\> text text text text text text text text text \\
+%	\> {\color{comment}\% 929j(*\&@\#wfwj9f8uv9 ... this would be ignored} \\
+%	\> {\color{comment}\% \hspace{0.5cm} even though it is atrocious and obnoxious} \\
+%	\> text text text text text text text text text \\
+%	\> text text text text text text text text text
+%\end{tabbing}
+\begin{center}
+\includegraphics[height=0.6in]{basicsOfLatex/gettingStarted/commenting}
+\end{center}
+
+\emph{해당 라인만} {\color{comment}\%} 다음에 텍스트는 \LaTeX에서 무시된다.
+
+\end{frame}
+
+%text text text text text text text text text text text text text text text
+%text text text text text text text text text text text text text text text
+% 92rj9\*U(Q\*U\@\#\#(Wqej ... this would be ignored...
+%       even though it is atrocious and obnoxious
+%text text text text text text text text text text text text text text text
+%text text text text text text text text text text text text text text text
+
+
+\begin{frame} \frametitle{두 부분으로 된 화면}
+TeXShop에는 {\color{highlight}Templates} 오른편에 있는 아이콘 \includegraphics[height=0.25cm]{basicsOfLatex/gettingStarted/dualScreenIcon} \hspace{0.3cm}을 클릭해서 화면을 두 부분으로 분할하는 선택옵션도 있다.
+
+\begin{center}
+\includegraphics[height=1.5in]{basicsOfLatex/gettingStarted/dualScreens}
+\end{center}
+장문의 문서를 작성하거나 편집할 때 매우 유용할 수 있다.
+\end{frame}
+
+\begin{frame} \frametitle{예제 템플릿}
+로컬 컴퓨터에 다음 압축 디렉토리\footnote{URL로 연결되지 않는다면, {\color{highlight}http://scc.stat.ucla.edu/}, mini-course에서 압축파일을 찾는다.}를 다운로드한다.
+
+\begin{center}
+{\color{highlight} http://www.stat.ucla.edu/$\sim$david/latexTemp.zip}
+\end{center}
+
+압축파일을 푼다 (맥에서 두번 클릭). {\color{highlight}latexTemp} 디렉토리의 주요 콘텐츠는 다음과 같다: 
+\vspace{0.0mm}
+\begin{itemize}
+\item 예제 문서 ({\color{highlight}latexTemp.tex})
+\vspace{-0.3cm}
+\item 이 발표자료 PDF 파일
+\vspace{-0.3cm}
+\item {\color{highlight}figures} 디렉토리
+\vspace{-0.3cm}
+\item UCLA 논문 템플릿 파일: {\color{highlight}uclathes-1.2} 와 {\color{highlight}uclathesUse}
+\end{itemize}
+
+{\color{highlight}latexTemp.tex} 파일은 이 발표자료 내용 대부분을 반영하여 작성했고, 예제와 더블어 추가적인 주석으로 구성되었다. 이 파일을 이제 열어본다.
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%\part{}
+
+\section[일반]{일반}
+
+\subsection[표제 절]{표제 절}
+\begin{frame} \frametitle{문서 유형}
+모든 \LaTeX 문서의 첫번째 명령어는 {\color{command}$\backslash$documentclass}가 된다. 기본적으로 어떤 유형의 문서를 만들 것인지 지정한다.
+\begin{center}
+\includegraphics[height=0.2in]{basicsOfLatex/general/documentClass}
+\end{center}
+디폴트 기본설정 \texttt{\color{highlight}article} 클래스다.
+\vspace{5mm}\\
+다른 클래스: \texttt{\color{highlight}letter}, \texttt{\color{highlight}beamer} (발표), \texttt{\color{highlight}book}. 다른 클래스에 대해서는 예제와 도움말을 온라인에서 찾을 수 있다.
+\vspace{5mm} \\
+만약 필요하면, \texttt{\color{highlight}[11pt]} 을 변경해서 문서 전체에 적용될 디폴트 기본설정 폰트 크기를 정한다. 
+\end{frame}
+
+
+\begin{frame} \frametitle{팩키지}
+팩키지는 추가 기능을 제공하고 일반적으로 무료다. 항상 문서 시작부분에 적재된다.\\
+\begin{figure}[htbp]
+   \centering
+   \includegraphics[height=0.7in]{basicsOfLatex/general/packages}
+\end{figure}
+\LaTeX 설치 시점에 대부분 많이 사용되는 패키지가 포함된다. 하지만, 다른 많은 팩키지가 포함되지는 않는다. 필요하면 부가 팩키지를 다운로드해서 설치해야만 된다 (여기서는 다루지 않는다).
+\end{frame}
+
+
+\subsection[개요]{개요}
+\begin{frame} \frametitle{절과 하위절}
+문서는 종종 절과 하위절로 분해된다. 이러한 위계체계는 \LaTeX에서 자동으로 숫자가 매겨진다.
+
+\begin{figure}[htbp]
+   \centering
+   \includegraphics[height=1.4in]{basicsOfLatex/general/sectionsSubsections}
+\end{figure}
+\end{frame}
+
+\subsection[텍스트]{텍스트}
+\begin{frame} \frametitle{문단}
+
+한 문단을 끝내고 새로운 문단을 생성하려면, ``{\color{highlight}엔터}(enter)''를 두번 친다. 그러면 줄바꿈이 된다.\\
+\vspace{0.5cm}
+문단사이에 추가 줄공백을 두려면, \texttt{.tex} 문서에 이중 줄바꿈으로 \texttt{\color{command}$\backslash\backslash$} 명령어를 사용한다. 
+
+\begin{figure}[htbp]
+   \centering
+   \includegraphics[height=1.4in]{basicsOfLatex/general/paragraphSpacing}
+\end{figure}
+\end{frame}
+
+
+\begin{frame} \frametitle{들여쓰기와 공백}
+{\bf 들여쓰기. } 들여쓰기 하려면, \texttt{\color{command}$\backslash$indent}을 사용한다. 들여쓰기 하지 않으려면, \texttt{\color{command}$\backslash$indent}을 사용한다. 들여쓰기를 \texttt{\color{command}$\backslash$setlength}\texttt{\color{braces}\{}\texttt{\color{command}$\backslash$parindent}\texttt{\color{braces}\}}\texttt{\color{braces}\{}\texttt{0in}\texttt{\color{braces}\}}을 사용해서 막을 수 있다.\\
+\vspace{0.7cm}
+{\bf 공백. } 수평 \hspace{1cm} 공백을 만들어 내려면, \texttt{\color{command}$\backslash$hspace}\texttt{\color{braces}\{}\texttt{1cm}\texttt{\color{braces}\}} 명령어를 사용한다. 마찬가지로, \texttt{\color{command}$\backslash$vspace}\texttt{\color{braces}\{}\texttt{0.5cm}\texttt{\color{braces}\}} 명령어를 사용하거나, 줄바꿈(디폴트 기본설정 이상) 다음에 추가 공백을 추가하려면, \texttt{{\color{command}$\backslash\backslash$}[1cm]}을 사용한다.
+음수 거리도 사용될 수 있다. 
+%\texttt{\color{command}$\backslash$hspace} 와 \texttt{\color{command}$\backslash$vspace}는 일반적으로 텍스트보다는 표에 더 유용하다.
+\end{frame}
+
+\begin{frame} \frametitle{폰트 만지작 거리기}
+{\bf 강조 (이태릭체). } \texttt{\color{command}$\backslash$emph} 명령어를 사용한다. 즉, 
+단어를 \emph{강조}(이태릭체)하는데 \texttt{\color{command}$\backslash$emph}{\color{braces}\{}\texttt{강조\color{braces}\}}를 사용한다.
+\\
+\vspace{0.7cm}
+
+{\bf 좀더 조작하기. } 
+텍스트를 \texttt{\color{command}$\backslash$textbf} 으로 \textbf{굵게} 만들거나 \texttt{\color{braces}$\{$\color{command}$\backslash$color\color{braces}$\{$\color{black}red\color{braces}$\}$\color{black}colored\color{braces}$\}$} 으로 {\color{red} 색깔}을 넣을 수도 있다 ({\color{highlight}color} 팩키지가 필요). \texttt{\color{command}$\backslash$texttt}으로 \texttt{타자기로 친 느낌}을 줄 수도 있다.\\
+\vspace{0.7cm}
+
+{\bf 폰트 크기. } 
+\texttt{\color{command}$\backslash$tiny}, \texttt{\color{command}$\backslash$scriptsize} 등등을 사용해서, 텍스트를 다양한 크기로 만들 수 있다. {\tiny 매우 작은 크기}, {\scriptsize 스크핍트 크기}, {\footnotesize 주석 크기}, {\small 작은 크기}, {\large 큰 크기}, {\Large 아주 큰 크기}, {\LARGE 매우 큰 크기}.
+\end{frame}
+
+
+\begin{frame} \frametitle{글머리표(Lists)}
+글머리표(list)를 다음 명령어로 생성한다.
+\begin{center}
+\includegraphics[height=0.7in]{basicsOfLatex/general/list}
+\end{center}
+
+상기 명령어를 실행하면 다음과 같이 글머리표 목록이 생성된다:
+\begin{itemize}
+\item Spacing (공백)
+\item Text (텍스트)
+\item Macros (매크로)
+\end{itemize}
+
+{\color{highlight}latex-intro-kr.tex} 문서에 추가 예제가 몇가지 더 있다.
+\end{frame}
+
+\begin{frame} \frametitle{매크로(Macros)}
+Macros(매크로)를 사용해서 좀더 많은 텍스트 변환을 할 수 있다.
+\begin{figure}[htbp]
+   \centering
+   \includegraphics[height=1.8in]{basicsOfLatex/general/macros}
+\end{figure}
+텍스트 변환에 Macros(매크로)가 아주 많은 선택옵션을 제공한다.
+\end{frame}
+
+\begin{frame} \frametitle{실습}
+\textit{기울여쓰기}(italicized)와 \textbf{굵게}(bolded) 표시된 단어와 구(phrase)를 포함한 짧은 문단 두개를 작성하시오.
+
+\vspace{7mm}
+
+두 문단 사이 줄바꿈을 하려면, 무엇을 해야 할까요? 두번째 문단만 들여쓰기를 하려면 어떻게 해야 할까요?
+
+\vspace{7mm}
+
+{\color{highlight}color} 팩키지를 추가하고 텍스트 일부에 색깔을 추가하라. 예를 들어, \texttt{\color{braces}$\{$\color{command}$\backslash$color\color{braces}$\{$\color{black}red\color{braces}$\}$\color{black} 텍스트 일부를 붉은 색으로 표시된다.\color{braces}$\}$} 와 같이 시도해 보세요.
+\end{frame}
+
+\section[표 / 탭(tabbing)]{표 / 탭(tabbing)}
+
+\subsection[탭(Tabbing)]{탭(Tabbing)}
+\begin{frame} \frametitle{탭(Tabbing)}
+다른 텍스트 편집기와 마찬가지로, \LaTeX은 탭(Tabbing)기능을 제공한다. 이 환경은 드물게 사용되는 경향이 있지만(적어도 저자 입장에서), 특정 조건에서는 매우 유용할 수 있다.
+
+\begin{figure}[htbp]
+   \centering
+   \includegraphics[height=1.3in]{basicsOfLatex/tabTable/tabbingExample}
+\end{figure}
+탭에 대한 간략한 소개와 몇가지 예제에 대해서 {\color{highlight}latex-intro-kr.tex} 파일을 참조한다.
+\end{frame}
+
+\subsection[표 기초]{표 기초}
+\begin{frame} \frametitle{표 기초}
+
+표는 \texttt{\color{highlight}tabular} 환경을 사용해서 생성한다. \text{\color{braces}\{}\texttt{lcr}\texttt{\color{braces}\}} 인자는 좌/우/가운데 정렬 기능을 제공한다. 앰퍼샌드({\color{highlight}\&})를 사용해서 다음 칼럼으로 넘어가는 것을 정의한다. 
+
+\begin{figure}[htbp]
+   \centering
+   \includegraphics[height=0.55in]{basicsOfLatex/tabTable/basicTable}
+\end{figure}
+
+\texttt{\color{command}$\backslash\backslash$} 명령어를 사용해서 \LaTeX 으로 하여금 새로운 행을 시작하게 한다.\\
+\vspace{0.3cm}
+결과는 다음과 같다: \\
+\vspace{0.3cm}
+\begin{tabular}{lcr} % lcr means make the 1st column left aligned, the 2nd centered, and the 3rd right aligned
+	Left & Center & Right \\ % the amperstands (&) define where to start the next column
+	1     & 2           & 3  \\
+\end{tabular}
+\end{frame}
+
+
+\begin{frame} \frametitle{가운데 정렬과 선(line) 추가}
+다음 표를 빌드하면:
+\begin{figure}[htbp]
+   \centering
+   \includegraphics[height=1.0in]{basicsOfLatex/tabTable/centeredTable}
+\end{figure}
+결과는 다음과 같다: \\
+\vspace{0.3cm}
+\begin{center} % center the table
+\begin{tabular}{l | rrrr} % the second 'l' is a vertical bar
+  \hline % add a horizontal line here
+ 		           & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\
+  \hline
+(Intercept) & -0.2852   & 0.8434     & -0.34    & 0.7452 \\
+x                & 0.4192    & 0.1499     & 2.80     & 0.0266 \\
+   \hline
+\end{tabular}
+\end{center}
+\end{frame}
+
+\subsection[캡션 \& 참조]{캡션 \& 참조}
+\begin{frame} \frametitle{캡션을 갖는 떠다니는 표}
+캡션 혹은 라벨을 추가하려면, 표가 \emph{떠다녀야}(floated) 된다 (즉, \texttt{\color{highlight}table} 환경에 추가한다). 그리고 나서, \texttt{\color{command}$\backslash$caption} 을 사용할 수 있다:
+
+\begin{figure}[htbp]
+   \centering
+   \includegraphics[height=0.6in]{basicsOfLatex/tabTable/floatTable}
+\end{figure}
+\vspace*{-0.3cm}
+출력 결과는 다음과 같다:
+\begin{table}[htbp]
+\begin{center} % center the table
+\begin{tabular}{l | rrrr} % the second 'l' is a vertical bar
+  \hline % add a horizontal line here
+ 		           & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\
+  \hline
+(Intercept) & -0.2852   & 0.8434     & -0.34    & 0.7452 \\
+x                & 0.4192    & 0.1499     & 2.80     & 0.0266 \\
+   \hline
+\end{tabular}
+\end{center}
+\caption{회귀분석 요약.}
+\end{table}
+\vspace*{-0.5cm}
+캡션이 \texttt{\color{highlight}article} 문서에 추가되면 표에 번호가 매겨진다.
+\end{frame}
+
+\begin{frame} \frametitle{참조}
+%Tables can be dynamically referenced (many examples in {\color{highlight}latexTemp.tex}).
+%\vspace{5mm} \\
+
+문서를 작성하고 표4를 참조한다고 가정하자. 이틀 뒤에 문서 앞쪽에 또다른 표를 추가한기로 결정했다. 이제 표4는 실질적으로 표5가 되고, 연관된 모든 4는 5로 (5는 6으로 등등) 바꿔야 한다.
+\vspace{5mm} \\
+대신에, 표 각각을 유일무이한 꼬리표를 붙인다. 숫자 번호가 아닌 꼬리표를 참조한다.
+
+\begin{figure}[htbp]
+   \centering
+   \includegraphics[height=0.4in]{basicsOfLatex/tabTable/labelTable}
+\end{figure}
+
+\texttt{\color{command}$\backslash$label}\texttt{\color{braces}\{}\texttt{regressTable}\texttt{\color{braces}\}} 꼬리표가 표에 붙었고, 이 표를 \LaTeX 코드를 사용해서 참조한다.
+
+\texttt{표$\sim$}\texttt{\color{command}$\backslash$ref}\texttt{\color{braces}\{}\texttt{regressTable}\texttt{\color{braces}\}}
+\end{frame}
+
+\subsection[xtable]{xtable}
+\begin{frame} \frametitle{R 팩키지 \texttt{xtable} 사용하기} 
+R의 내부: \\
+\vspace{0.1cm} \small
+\hspace{0.3cm}\texttt{> library(xtable) \# install.packages('xtable') 실행이 필요할 수도 있다.} \\
+\hspace{0.3cm}\texttt{> x <- 1:9} \\
+\hspace{0.3cm}\texttt{> z <- rnorm(9)} \\
+\hspace{0.3cm}\texttt{> y <- x$/$7 + z$^*$2 + rnorm(9)} \\
+\hspace{0.3cm}\texttt{> xtable(summary(lm(y $\sim$ x$+$z)))} \\
+\hspace{0.3cm}\texttt{... \LaTeX 내부로 복사/붙여넣기 할 수 있는 출력결과...} \\
+\vspace{0.1cm} \normalsize
+R 출력결과를 \LaTeX 내부로 직접 복사해서 붙여넣기 한다:
+\begin{table}[ht]
+\begin{center}
+\begin{tabular}{rrrrr}
+  \hline
+ & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\
+  \hline
+(Intercept) & -0.1563 & 0.6243 & -0.25 & 0.8107 \\
+  x & 0.1094 & 0.1145 & 0.96 & 0.3760 \\
+  z & 2.6170 & 0.4308 & 6.08 & 0.0009 \\
+   \hline
+\end{tabular}
+\end{center}
+\end{table}
+\end{frame}
+
+\frame{ \frametitle{실습}
+다음 출력결과를 생성하라:
+\begin{center}
+\begin{tabular}{l rrr}
+\hline
+& mean & sd & n \\
+\hline
+S1 & 6.5 & 1.3 & 17 \\
+S2 & 12.2 & 1.4 & 25 \\
+\hline
+\end{tabular}
+\end{center}
+
+\texttt{\color{highlight}latex-intro-kr.tex} 파일에 일부 예제를 활용할 수도 있다.
+}
+
+
+\section[그림]{그림}
+\subsection[그림]{그림}
+\begin{frame} \frametitle{그림 기초}
+{\color{command}$\backslash$includegraphics} 명령어를 사용해서 그림을 추가한다.
+\begin{center}
+\includegraphics[height=15mm]{basicsOfLatex/figures/basicFigures}
+\end{center}
+첫번째 파일은 \LaTeX 파일과 동일한 디렉토리에 저장된다. 두번째 파일은 디렉토리 두개 정도 떨어져 있다. 
+\vspace{0.5cm} \\
+\emph{사용되는 파일과 디렉토리 명칭은 공백이 없어야 한다.}
+\vspace{0.5cm} \\
+\texttt{[height=1.0in]} 은 선택옵션 인자로 그림 크기를 제어한다.
+\end{frame}
+
+\begin{frame} \frametitle{그림 가운데 정렬}
+표와 마찬가지로, 그림을 가운데 정렬할 수 있다:
+\begin{center}
+\includegraphics[height=1.1in]{basicsOfLatex/figures/centerFigure}
+\end{center}
+두번째 방법은 어떤 점에서 떠다니는 표와 유사한가? (두번째 방법이 떠다니는 그림이다.)
+\end{frame}
+
+\begin{frame} \frametitle{캡션과 참조 추가하기}
+떠다니는 \texttt{\color{highlight}table} 환경처럼, 떠다니는 그림도 캡션과 참조를 갖을 수 있다.
+\begin{center}
+\includegraphics[height=0.9in]{basicsOfLatex/figures/figureWithCaptionLabel}
+\end{center}
+표와 마찬가지로, 참조가 올바르게 동작하도록 \texttt{\color{command}$\backslash$caption} 명령어 다음에 \texttt{\color{command}$\backslash$label} 명령어가 와야 된다.
+\vspace{5mm} \\
+그림$\sim${\color{command}$\backslash$ref}{\color{braces}$\{${\color{black}figureTemplate}$\}$}을 통해서 참조할 그림 템플릿을 찾는다.
+\end{frame}
+
+\subsection[체계적으로 정리]{체계적으로 정리}
+\begin{frame} \frametitle{체계적으로 정리}
+\LaTeX을 사용할 때 체계적으로 정리하는 비법 몇가지:
+\begin{itemize}
+\item 디렉토리마다 \LaTeX 문서는 하나.
+\item 그림에 사용할 \texttt{\color{command}$\backslash$label} 명칭을 선택할 때, 그림 파일 명칭과 매칭시킨다.
+\item 그림 파일을 디렉토리에 체계적으로 정리한다.
+\item 만약 코드를 사용해서 그림을 생성한다면, 그림과 동일한 디렉토리에 동일한 명칭(하지만, 확장자는 물론 다르다)으로 코드를 정한다.
+\item 기억하라, 파일 혹은 디렉토리 명칭에 공백은 없다.
+\end{itemize}
+\end{frame}
+
+\frame{ \frametitle{실습}
+\texttt{\color{highlight}latexTemp/figures/lower82/} 디렉토리에 이미지를 사용해서, 다음 그림을 생성하시오. 높이 2 센티미터(0.8 인치), 가운데 정렬, 캡션 추가, 참조 추가하세요. 그림을 참조하는 문장도 작성하고 \LaTeX 문서를 두번 컴파일 해서 참조가 정상 동작되도록 한다. \\
+\begin{center}
+   \includegraphics[height=1.3in]{basicsOfLatex/latexTemp/figures/lower82/lower82}
+\end{center}
+
+\texttt{\color{highlight}latex-intro-kr.tex} 파일에 예제를 자유로이 사용하고, \LaTeX  \hspace{0.1cm} 떠다니는 그림 템플릿(Float Figure template)을 사용하세요.
+}
+
+
+\section[추가정보]{추가정보}
+
+\subsection[사례]{사례}
+\frame{ \frametitle{다방면의 가능성}
+\LaTeX은 다양한 작업을 수행할 강력한 기능이 있다:
+\begin{itemize}
+\item 화학식
+\item 전자회로
+\item 파인만 도표(소립자 등의 상호 작용을 표현하는 도표)
+\item 음악 악보
+\item 십자 낱말 맞추기
+\item 스도쿠 퍼즐
+\end{itemize}
+이러한 다양한 응용프로그램은 일반적으로 다운로드한 기본 \LaTeX 에는 포함되어 있지 않다. 하지만, 비용없이 무료로 다운로드 받을 수 있다. \\
+미려한 문서와 그림을 만들 수 있는 능력이 \LaTeX 이 인기를 끄는 이유 중 하나다. 사용자에게 거의 무한대로 문서에 제어권한을 부여한다 (처음에는 다소 제어가 되지 않는다고 느낄 수도 있지만).
+}
+
+\subsection[향후 계획?]{향후 계획?}
+\frame{ \frametitle{\LaTeX II}
+다음 교육과정에서 다음 주제를 다룰 예정이다.
+\begin{itemize}
+\item \LaTeX 수학
+\item BibTeX
+\item 사용자 정의 명령어와 환경
+\end{itemize}
+}
+
+\subsection[책]{책}
+\frame{ \frametitle{추천하는 책}
+\emph{Guide to LaTeX}, by Helmut Kopka and Patrick W. Daly
+}
+
+\subsection[숙제]{숙제}
+\frame{ \frametitle{숙제}
+만약 이 과정을 학점과정으로 이수하고 있다면, 다음 수업전까지 다음 과제를 제출한다.
+\LaTeX 파일 원본 $+$ PDF 파일을 함께 포함해서 제출한다. 종이가 낭비되지 않도록 두 페이지를 종이 한장에 양쪽으로 출력하라. \\[5mm]
+
+\LaTeX 으로 2 페이지 문서를 작성하라(혹은, \LaTeX 이 아닌 또다른 문서를 \LaTeX으로 변환한다). 문서에는 (a) 2개 이상 문단을 포함하고, (b) 적어도 그림 한개를 포함하고, (c) 적어도 표가 하나 있어야 하고, (d) 표와 그림에 {\color{command}$\backslash$label}을 사용해서 텍스트를 참조가 포함되야 한다.
+}
+
+
+\end{document}
