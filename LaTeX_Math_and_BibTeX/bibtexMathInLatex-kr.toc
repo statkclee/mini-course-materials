@@ -1,10 +1,8 @@
 \beamer@endinputifotherversion {3.33pt}
-\beamer@sectionintoc {1}{BibTeX}{4}{1}{1}
-\beamer@subsectionintoc {1}{1}{BibTeX에 오신걸 환영합니다.}{4}{1}{1}
-\beamer@subsectionintoc {1}{2}{Building the database}{7}{1}{1}
-\beamer@subsectionintoc {1}{3}{Citing a reference}{13}{1}{1}
-\beamer@subsectionintoc {1}{4}{Typesetting}{15}{1}{1}
-\beamer@subsectionintoc {1}{5}{Building your own style file (the easy way)}{16}{1}{1}
-\beamer@subsectionintoc {1}{6}{Practice}{18}{1}{1}
-\beamer@sectionintoc {2}{Wrap-up}{19}{1}{2}
-\beamer@subsectionintoc {2}{1}{Wrap-up}{19}{1}{2}
+\beamer@sectionintoc {1}{사용자 정의}{4}{1}{1}
+\beamer@subsectionintoc {1}{1}{다룰 내용}{4}{1}{1}
+\beamer@subsectionintoc {1}{2}{계수기(Counters)}{5}{1}{1}
+\beamer@subsectionintoc {1}{3}{명령어}{9}{1}{1}
+\beamer@subsectionintoc {1}{4}{환경}{12}{1}{1}
+\beamer@sectionintoc {2}{Wrap-up}{15}{1}{2}
+\beamer@subsectionintoc {2}{1}{Wrap-up}{15}{1}{2}

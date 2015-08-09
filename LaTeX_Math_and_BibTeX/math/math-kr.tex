@@ -1,0 +1,273 @@
+
+%READ ME
+% LaTeX 명령어 외양을 쉽게 생성하도록 명령어 두개를 생성했다.
+%    \lcom{command} 명령어를 사용해서 역슬래쉬와 색깔을 포함하는 명령어를 출력한다. 
+%    \larg{argument} 명령어를 사용해서 인자를 녹색 중괄호로 출력한다. 
+%    \mathText{math text} 명령어를 사용해서 두 녹색 $ 주위 인자를 출력한다.
+% 추가적으로, 명령어를 조합한다:
+%    {\color{braces}\$}\texttt{\color{command}$\backslash$alpha}\texttt{\color{braces}\$}
+%    대신에
+%    \mathText{\lcom{alpha}} 명령어를 사용한다.
+
+\section[수학]{수학}
+
+\subsection[수학]{수학}
+\begin{frame} \frametitle{\LaTeX 수학}
+\LaTeX 에서 제공하는 수학 환경 몇가지 측면을 다룰 예정이다.
+\begin{itemize}
+\item 텍스트에 수식 기초
+\item 다양한 방정식 환경
+\item 수학 기호
+\item 수학 표현식
+\item 텍스트 강조와 변형
+\item 괄호 기호의 자동 크기 조정
+\item 수학 방정식에 텍스트
+\item 배열과 행렬
+\end{itemize}
+\end{frame}
+
+\subsection[수식 삽입]{수식 삽입}
+\begin{frame} \frametitle{수식을 텍스트에 삽입}
+
+\LaTeX에서 $\alpha$, $\zeta$, $\mu$ ... 같은 그리스 문자를 추가하기 쉽다.
+동일한 방식으로 방정식도 쉽게 추가될 수 있다: $y=x^3$, $\sum z^j$, $x_1+\cdots+x_n$.
+\begin{center}
+\includegraphics[height=0.47in]{math/mathInText}
+\end{center}
+
+{\color{braces}\$} 기호는 \LaTeX으로 하여금 언제 수식 모형으로 들어가거나 빠져나올지를 일러준다.
+예를 들어, 상기 $\alpha$ 를 생성하려면, \mathText{\lcom{alpha}} 타이핑한다. % {\color{braces}\$}\texttt{\color{command}$\backslash$alpha}\texttt{\color{braces}\$}.
+\vspace{5mm} \\
+$\beta$을 어떻게 생성할 수 있을까요?
+\end{frame}
+
+\begin{frame} \frametitle{방정식 배열}
+방정식 일부는 길어서 텍스트와 함께 표기되지 못해 그 차제로 행에 표시되어야 한다. 이런 경우에 \texttt{\color{highlight}eqnarray} 혹은 \texttt{\color{highlight}eqnarray$^*$} 환경을 사용한다:
+\begin{center}
+\includegraphics[height=0.4in]{math/eqnarrayStar}
+\end{center}
+\texttt{\color{highlight}eqnarray$^*$}으로 \LaTeX 표현 결과::
+\begin{eqnarray*}
+\sum_{k=0}^{\infty}0.5^k = \frac{1}{1-0.5} = 2
+\end{eqnarray*}
+\end{frame}
+
+\begin{frame} \frametitle{방정식 참조}
+표와 그림과 마찬가지로, 방정식을 참조할 수 있다. \texttt{\color{highlight}eqnarray} (별표 없음) 을 사용해서 방정식 번호를 붙인다:
+\begin{eqnarray}
+\sum_{k=0}^{\infty}0.5^k = \frac{1}{1-0.5} = 2
+\end{eqnarray}
+\texttt{\color{command}$\backslash$label}\texttt{\color{braces}\{}\texttt{powerSeries}\texttt{\color{braces}\}} 라벨을 방정식 배열 내부에 두고 나서, \texttt{\color{command}$\backslash$ref}\texttt{\color{braces}\{}\texttt{powerSeries}\texttt{\color{braces}\}} 을 통해 참조한다.
+\begin{center}
+\includegraphics[height=0.6in]{math/eqnarray}
+\end{center}
+\end{frame}
+
+\begin{frame} \frametitle{줄맞춘 방정식}
+또다른 환경, \texttt{\color{highlight}align} (그리고 \texttt{\color{highlight}align$^*$}) 은 여러행에 걸친 방정식 줄을 맞추는데 편리하다.
+\vspace{-0.3cm}
+\begin{center}
+\includegraphics[height=14mm]{math/align}
+\end{center}
+\vspace{-0.3cm}
+결과는 다음과 같다:
+\vspace{-0.3cm}
+\begin{align}
+(a+b)^3 &= (a+b) (a^2 + 2ab + b^2) \notag \\
+\vspace{-0.1cm}
+	      &= a^3 + 3a^2b + 3ab^2 + b^3
+\end{align}
+\vspace{-0.1cm}
+\texttt{\color{command}$\backslash\backslash$} 명령어로 줄바꿈한다. \texttt{\color{command}$\backslash$notag} 명령어로 첫행에 방정식 숫자가 나타나지 못하게 한다. 여기에, \texttt{\color{highlight}amsmath} 팩키지가 필요하다. (질문: 방정식 번호가 있으려면, 코드에 무엇을 포함해야 할까?)
+\end{frame}
+
+\begin{frame} \frametitle{다수 줄맞춤}
+\texttt{\color{highlight}align} 환경은 다수 정렬을 가능케 한다:
+\begin{center}
+\includegraphics[height=14mm]{math/alignMany}
+\end{center}
+출력 결과는 다음과 같다.
+\begin{align*}
+(a+b)^0 &=1                            & (a+b)^1 &= a+b \\
+(a+b)^2 &=a^2 + 2ab + b^2     & (a+b)^3 &= a^3 + 3a^2b + 3ab^2 + b^3
+\end{align*}
+%The \texttt{\color{command}$\backslash\backslash$} command creates a line break. The command \texttt{\color{command}$\backslash$notag} was used to suppress the equation number of the first line (package \texttt{\color{highlight}amsmath} required).
+%\texttt{\color{command}$\backslash$label}\texttt{\color{braces}\{}\texttt{powerSeries}\texttt{\color{braces}\}} can be put inside the equation array and then be referenced via \texttt{\color{command}$\backslash$ref}\texttt{\color{braces}\{}\texttt{powerSeries}\texttt{\color{braces}\}}.
+\end{frame}
+
+\subsection[수학과 기호]{수학과 기호}
+
+\begin{frame} \frametitle{수학과 기호}
+모든 수학 구문을 배우는 것은 어렵다. \LaTeX 과 Matrix Panels이 도움이 많이 된다:
+\begin{center}
+\includegraphics[height=1.5in]{math/panels}
+\end{center}
+Matrix Panel 이 특히 유용한데 배열을 만들려면 작성할 것이 많기 때문이다.
+\LaTeX 패널은 신속한 참조용로 편리하게 사용할 수 있다.
+\end{frame}
+
+\begin{frame} \frametitle{수학 기호 일부}
+\LaTeX에 이용가능한 일부 기호가 다음에 나와 있다.
+%\begin{center}
+\begin{tabular}{rl p{4mm} rl p{4mm} rl}
+$\leftarrow$ & {\color{braces}\${\color{command}$\backslash$leftarrow}\$} &&
+$\Leftarrow$ & {\color{braces}\${\color{command}$\backslash$Leftarrow}\$} && 
+$\leftrightarrow$ & {\color{braces}\${\color{command}$\backslash$leftrightarrow}\$} \\
+$\geq$ & {\color{braces}\${\color{command}$\backslash$geq}\$} &&
+$\neq$ & {\color{braces}\${\color{command}$\backslash$neq}\$} &&
+$\not\in$ & {\color{braces}\${\color{command}$\backslash$not$\backslash$in}\$} \\
+$\partial$ & {\color{braces}\${\color{command}$\backslash$partial}\$} &&
+$\oint$ & {\color{braces}\${\color{command}$\backslash$oint}\$} &&
+$\nabla$ & {\color{braces}\${\color{command}$\backslash$nabla}\$} \\
+$\bigcap$ & {\color{braces}\${\color{command}$\backslash$bigcap}\$} &&
+$\bigcup$ & {\color{braces}\${\color{command}$\backslash$bigcup}\$} &&
+$\cap$ & {\color{braces}\${\color{command}$\backslash$cap}\$} \\
+$\subset$ & {\color{braces}\${\color{command}$\backslash$subset}\$} &&
+$\supseteq$ & {\color{braces}\${\color{command}$\backslash$supseteq}\$} &&
+$\not\supseteq$ & {\color{braces}\${\color{command}$\backslash$not$\backslash$supseteq}\$} \\
+$\bigodot$ & {\color{braces}\${\color{command}$\backslash$bigodot}\$} &&
+$\bigotimes$ & {\color{braces}\${\color{command}$\backslash$bigotimes}\$} &&
+$\oplus$ & {\color{braces}\${\color{command}$\backslash$oplus}\$} \\
+$\clubsuit$ & {\color{braces}\${\color{command}$\backslash$clubsuit}\$} &&
+$\perp$ & {\color{braces}\${\color{command}$\backslash$perp}\$} &&
+$\vdash$ & {\color{braces}\${\color{command}$\backslash$vdash}\$} \\
+\end{tabular}
+%\end{center}
+수천가지 기호를 검색할 수 있는 PDF 파일은 웹사이트를 참조.
+\vspace{-0.3cm}
+\begin{itemize}
+\item[] {\small\color{highlight}www.ctan.org/tex-archive/info/symbols/comprehensive/symbols-a4.pdf}
+\end{itemize}
+\vspace{-0.3cm}
+({\color{highlight}Window} 메뉴 항목 아래) LaTeX Panel 도 참조한다.
+\end{frame}
+
+\begin{frame} \frametitle{문자 변형}
+수학 모드에서 텍스트와 기호도 변형할 수 있다.
+\begin{center}
+\begin{tabular}{rl p{4mm} rl p{4mm} rl}
+\hline
+\multicolumn{3}{l}{정규} & {변형} &&& {강조} & \\
+\hline
+{\color{braces}\${\color{black}R}\$} & $R$ &&
+{\color{braces}\${\color{command}$\backslash$mathbb}$\{${\color{black}R}$\}$\$} & $\mathbb{R}$ &&
+{\color{braces}\${\color{command}$\backslash$tilde}$\{${\color{black}R}$\}$\$} & $\tilde{R}$ \\
+{\color{braces}\${\color{black}A}\$} & $A$ &&
+{\color{braces}\${\color{command}$\backslash$mathcal}$\{${\color{black}A}$\}$\$} & $\mathcal{A}$ &&
+{\color{braces}\${\color{command}$\backslash$widetilde}$\{${\color{black}A}$\}$\$} & $\widetilde{A}$ \\
+{\color{braces}\${\color{black}x}\$} & $x$ &&
+{\color{braces}\${\color{command}$\backslash$mathbf}$\{${\color{black}x}$\}$\$} & $\mathbf{x}$ &&
+{\color{braces}\${\color{command}$\backslash$bar}$\{${\color{black}x}$\}$\$} & $\bar{x}$ \\
+{\color{braces}\${\color{black}p}\$} & $p$ &&
+{\color{braces}\${\color{command}$\backslash$mathit}$\{${\color{black}p}$\}$\$} & $\mathit{p}$ &&
+{\color{braces}\${\color{command}$\backslash$hat}$\{${\color{black}p}$\}$\$} & $\hat{p}$ \\
+{\color{braces}\${\color{black}X}\$} & $X$ &&
+{\color{braces}\${\color{command}$\backslash$mathrm}$\{${\color{black}X}$\}$\$} & $\mathrm{X}$ &&
+{\color{braces}\${\color{command}$\backslash$widehat}$\{${\color{black}X}$\}$\$} & $\widehat{X}$ \\
+\hline
+\end{tabular}
+\end{center}
+두가지 다른 강조:  {\color{braces}\${\color{command}$\backslash$dot}$\{${\color{black}x}$\}$\$} 와 {\color{braces}\${\color{command}$\backslash$ddot}$\{${\color{black}x}$\}$\$} 으로 $\dot{x}$ 와 $\ddot{x}$.
+\end{frame}
+
+\begin{frame} \frametitle{첨자와 지수}
+윗첨자(예를 들어, $x_1$)와 아래첨자(예를 들어, $3^2$)도 생성할 수 있다:
+\begin{center}
+\includegraphics[height=8mm]{math/subSuperscript}
+\end{center}
+첨자가 단일 문자일 때, 괄호를 생략할 수 있다. 즉, 상기 텍스트에 대해 다음도 동일하게 받아들일 수 있다:
+\begin{center}
+\includegraphics[height=8mm]{math/subSuperscriptNoBraces}
+\end{center}
+만약 윗/아래 첨자 문자가 하나 이상이라면, 괄호를 사용해서 문제를 피한다: {\color{braces}\${\color{black}2\textbf{\_}10}\$} 은 $2_10$ 을 만들어 낸다. 위첨자와 아래첨자를 동시에 사용할 수 있다: $x_{ij}^2$.
+\end{frame}
+
+\begin{frame} \frametitle{분수와 근(root)}
+$\frac{2+3}{4+5} = \frac{5}{9}$ 처럼 분수 혹은 $\sqrt{81}=9$ 와 $\sqrt[4]{81} = 3$ 처럼 근(root)도 쉽게 생성할 수 있다.
+\begin{center}
+\includegraphics[height=7mm]{math/fracRoots}
+\end{center}
+물론 분수와 근도 조합할 수 있다:
+$\frac{\sqrt{4} + 3}{\sqrt{16} + 5} = \frac{5}{9}$.
+\begin{center}
+\includegraphics[height=7mm]{math/fracRootsCombined}
+\end{center}
+\end{frame}
+
+\begin{frame} \frametitle{합과 적분}
+합과 적분도 생성할 수 있다:
+\vspace{-0.3cm}
+\begin{center}
+\includegraphics[height=14mm]{math/sumIntegral}
+\end{center}
+\vspace{-0.3cm}
+결과는 다음과 같다
+\vspace{-0.3cm}
+\begin{align*}
+\sum_{i=0}^{\infty} p^i &= \frac{1}{1-p}   &  \int_{1}^{2}3x^2dx          &= 7 \\
+\sum\nolimits_{i=0}^{\infty} 0.5^i &= 2    &  \int\limits_{1}^{1}3x^2dx &= 0
+\end{align*}
+
+\texttt{\color{command}$\backslash$nolimits} 와 \texttt{\color{command}$\backslash$limits} 명령어를 사용해서 \LaTeX 에 디폴트 기본설정된 극한(limit) 표시를 덮어쓸 수 있다.
+\end{frame}
+
+\begin{frame} \frametitle{실습}
+\texttt{\color{highlight}eqnarray$^*$} 환경을 사용해서 다음 결과를 생성하시오:
+\begin{center}
+   \includegraphics[height=0.6in]{math/tryIt3}
+\end{center}
+예제 일부를 \texttt{\color{highlight}latex-intro-kr.tex} 파일에서 활용가능하다.
+\end{frame}
+
+\subsection[최종 항목]{최종항목}
+\begin{frame} \frametitle{괄호 크기}
+괄호 크기와 관련한 작은 문제가 왼쪽 식에 나와 있고, 오른편에 문제를 고친 식이 나와 있다.
+\vspace{-0.3cm}
+\begin{align*}
+   (\frac{2+3}{4+5}) &&& \left(\frac{2+3}{4+5}\right)
+\end{align*}
+상기 표현식에 사용된 코드는 다음과 같다.
+\begin{center}
+\includegraphics[height=9mm]{math/fixingParentheses}
+\end{center}
+\vspace{-0.3cm}
+일반적으로 자동으로 크기 조절되는 괄호를 생성하려면, {\color{command}$\backslash$left\color{black}(}, {\color{command}$\backslash$left\color{black}[}, {\color{command}$\backslash$left\color{black}$|$},  {\color{command}$\backslash$left$\backslash\{$} 와 함께 상응하는 오른쪽 괄호를 함께 사용한다. 상기 명령어는 방정식 환경 내부에 \emph{있어야만} 하고, 왼쪽과 오른쪽 괄호는 항상 짝이 맞아야 된다.
+\end{frame}
+
+\begin{frame} \frametitle{행렬}
+행렬도 \LaTeX에서 만들 수 있다:
+\begin{eqnarray*}
+\left(\begin{array}{ccc} 4 & 1 & 19 \\ 3 & 8 & 8\end{array}\right)
+\end{eqnarray*}
+상기 행렬을 만드는 코드는 다음과 같다:
+\begin{center}
+\includegraphics[height=0.6in]{math/array}
+\end{center}
+\texttt{\color{highlight}array}에 대한 구문은 \texttt{\color{highlight}tabular} (표)에 사용하는 구문과 같다.
+\end{frame}
+
+\begin{frame} \frametitle{공백과 쌓기(stacking)}
+{\color{command}$\backslash$quad} 을 사용해서 방정식에 공백을 추가할 수 있고, {\color{command}$\backslash$stackrel} 을 사용해서 표현식을 쌓을 수도 있다:
+
+\vspace{1mm}
+
+\begin{itemize}
+\item[] {\color{command}$\backslash$begin}{\color{braces}$\{${\color{black}eqnarray$^*$}$\}$}
+\item[] \hspace{2mm} E(X+Y)
+	{\color{command}$\backslash$stackrel\color{braces}$\{${\color{black}indep.}$\}\{${\color{black}=}$\}$}
+	E(X) + E(Y)
+\item[] \hspace{5mm} {\color{command}$\backslash$quad$\backslash$quad}
+\item[] \hspace{5mm} Var(X+Y)
+	{\color{command}$\backslash$stackrel\color{braces}$\{${\color{black}indep.}$\}\{${\color{black}=}$\}$}
+	Var(X) + Var(Y)
+\item[] {\color{command}$\backslash$end}{\color{braces}$\{${\color{black}eqnarray$^*$}$\}$}
+\end{itemize}
+
+\vspace{1mm}
+
+상기 명령어는 다음을 만들어 낸다:
+\begin{eqnarray*}
+E(X+Y) \stackrel{indep.}{=} E(X) + E(Y) \quad\quad Var(X+Y) \stackrel{indep.}{=} Var(X) + Var(Y)
+\end{eqnarray*}
+\end{frame}
+
