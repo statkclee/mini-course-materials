@@ -126,25 +126,25 @@ $n^{th}$ 인자에 대해서 \#n 을 통해 추가 인자를 생성하고 참조
 \small\textbf{예제.}\hspace{1.5mm} 나머지 연산의 덧셈은 신비롭게 동작한다: $2+2 = 1$ (mod 3).
 \end{frame}
 
-\begin{frame}  \frametitle{General environment}
-Generally environments take the form
+\begin{frame}  \frametitle{일반 환경}
+일반적으로 환경(environment)은 다음과 같은 형태를 갖는다.
 \vspace{0.5mm} \\
 \begin{itemize}
 \item[] {\color{command}$\backslash$newenvironment\color{braces}$\{${\color{black}environmentName}$\}\{${\color{highlight}begin stuff}$\}\{${\color{highlight}end stuff}$\}$}
 \end{itemize}
 \vspace{0.5mm}
-We can also declare that there will be \texttt{n} arguments.
+또한,  \texttt{n} 개 인자를 선언할 수도 있다.
 \vspace{0.5mm} \\
 \begin{itemize}
 \item[] {\color{command}$\backslash$newenvironment\color{braces}$\{${\color{black}environmentName}$\}${\color{black}[n]}$\{${\color{highlight}begin stuff}$\}\{${\color{highlight}end stuff}$\}$}
 \end{itemize}
 \vspace{0.5mm}
-As before, we refer to the arguments as \#1, \dots, \#n in the {\color{highlight}begin stuff} and {\color{highlight}end stuff}.
-\vspace{7mm} \\
-To redefine an environment that already exists, use {\color{command}$\backslash$renewenvironment} with the same format as above.
+앞에서처럼, {\color{highlight}시작하는 것(begin)} and {\color{highlight}끝나는 것(end)} 에서 인자를 \#1, \dots, \#n 으로 참조한다.
+\vspace{3mm} \\
+기존 환경을 다시 정의하려면, 위와 동일한 형식으로 {\color{command}$\backslash$renewenvironment} 명령어를 사용한다.
 \end{frame}
 
-\begin{frame}  \frametitle{Environment + counter}
+\begin{frame}  \frametitle{환경 + 계수기}
 \begin{itemize}
 \item[] {\color{command}$\backslash$newcounter\color{braces}$\{${\color{black}example}$\}$}
 \item[] {\color{command}$\backslash$setcounter\color{braces}$\{${\color{black}example}$\}$$\{${\color{black}0}$\}$}
